@@ -8,3 +8,4 @@ Pure Software
 ===============
 - How to hanlde failure of any MS
 - How many instance of each MS
+- Any API management tool for MS to interact

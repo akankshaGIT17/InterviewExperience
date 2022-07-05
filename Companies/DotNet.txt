@@ -12,7 +12,7 @@ MIRKIT
 XORIANT
 -------
 - internal vs protected
-
+- Size of array is huge say 10 lakh. How to find 5th largest element
 
 
 
@@ -21,3 +21,15 @@ Web API
 - Http verb Head, Option , Trace etc
 - Difference between PUT and PST
 - Idemplotency
+
+Egon
+======
+- Roles in Auth
+- Auth vs Authorization
+- JWT token checking on gateway of MS
+- ORM in current system
+- How to configure EF in system
+- What is  HttpClient class
+- M2M realtion incode firsth and SQl. 
+	In SQL will it lead to redudancy
+

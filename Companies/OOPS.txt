@@ -1,3 +1,5 @@
 Pure Software
 ==============
 - Explain Open close principle
+- Explain Liskov principle and when is it vvoilated
+- how to increase functionaslity of class when other classes don't want to implement

@@ -7,6 +7,8 @@ Pure Software
 ============
 - Why KeyVault
 - Standard kafka and dev env of your system
+- how many insatnces of application 
+- How many clusters n each application
 
 EGon Zehnnder
 =============
