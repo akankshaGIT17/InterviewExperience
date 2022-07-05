@@ -1,0 +1,14 @@
+ RateGain -
+- WAP for Fibonacci of n number
+- WAP Prime number btw 1 to 100
+- WAP for Palindrom of string
+
+Wipro AMCT
+- Find element in A2 not present in A1 both are array
+	8 10 21 61 71
+	9 21 71 22 10
+- find least asnd max value in double
+10 21 61 71 88
+o/p ,ax - 78 (btw 10 -88)
+
+

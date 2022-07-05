@@ -1,0 +1,21 @@
+-Which authentication protocol used in project
+- project architecture
+- How many PODS hosted on production
+- Which Azure service is used to host the API.
+- Where is the API Hosted how 
+- How many instance of each MS
+- How handle failure of MS in ur system
+- how many instances of application
+- how many cluster in each instance
+- How do you configure new client in your project
+- Where is token saved in UI
+- ORM of current project
+
+-What was your role in your project
+- do you wrote any hanlers/services
+-  Except for JIRa anything else u used
+- TDD, sonar, sonarcube
+- What is supply chain UPS
+- What optimization and perfomance tuning you did
+- How did you helped in desingn phase of your project
+- explain you previous proejcts and technologies you have used

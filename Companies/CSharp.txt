@@ -1,0 +1,62 @@
+- Roles in Authentication
+- Authentication vs Authorization
+- I in SOLID
+- Core in Onion Architecture
+- What is Clean architecure
+- What is DDD
+- What is HttpClient Class in C#
+- How Configure EF in system.
+- Many to Many relation ship in Code first.
+- M2M in databse first? M2M in chema of databse ..will it create redudency
+- ORM of your current system
+- What is CORS
+
+XORIANT
+====
+-- Difference  btw IDisposable and Finalize
+
+- Will this work 
+class base{
+public int x= 10;
+public void shw(){}
+}
+class derived:base{
+public int x= 10;
+public void shw(){}
+}
+
+-Find Output:
+	Class A{}
+	Class B{}
+B b = new A();
+A a = new B();
+
+- Will it work
+ int sum(int a, int b){}
+float sum(int a, int b){}
+int sum(int a, int b){}
+float sum(int a, int b, int c=0){}
+
+
+R SYSTEMS
+===========
+- Find missing numbers List<int>={1,4,9} (hint :can use range)
+- What will be the return type
+	var result = list.Select(O => O.Any())
+- Diff btw Wait and Wait All()
+- Diff btw async Task func() & async void func()
+	
+Pure Softwares
+==============
+- Parallel.foreach(whta it accepts)
+	vs calling threads directly
+- Size of array si huge 9lets say 10 lakh)How you find 5 largest element
+
+=== Mpahasis
+- Disadvantage of cookie based Authentication system
+
+
+=== MIRKKIT
+--------------
+- Dynamic vs object
+- 

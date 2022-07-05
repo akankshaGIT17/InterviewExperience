@@ -1,0 +1,25 @@
+R Systems
+=========
+- What are laod balancers and API Gateways
+
+
+Pure Software
+============
+- Why KeyVault
+- Standard kafka and dev env of your system
+
+EGon Zehnnder
+=============
+- Where is aPI hsoted in azyre service plan (PaaS)
+- Are you containerizing
+- How do you create container in docker
+- API Gateway
+- Token based auth from API gateway
+- How to async call MS
+- What Azure Servixes worked on 
+- Azure Service Bus vs Azure Evvent Bus vs Kafka
+- How fetch/ auth Key vault in app
+- Access key/vault form code
+- ways you are securing your key/vault
+- Manage Identity in Azure
+

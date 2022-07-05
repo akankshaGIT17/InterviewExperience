@@ -1,0 +1,10 @@
+MIRKIT
+======
+-What is bounded context in Micorservices
+- SAGA pattern in microservices
+- Is gateway called first or server
+
+Pure Software
+===============
+- How to hanlde failure of any MS
+- How many instance of each MS

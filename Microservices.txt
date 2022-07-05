@@ -1,0 +1,7 @@
+- What is Microservices?
+- Do/when we really need Microservices?
+- What problem really microservices solves?
+- Does we really need cloud if we decide to go for Microservices?
+- Disadvantages of Microservices?
+- If we decide to move the Microservices application to cloud what will be the implication?
+- What is API gateway?

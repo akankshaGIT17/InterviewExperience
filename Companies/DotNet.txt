@@ -1,0 +1,23 @@
+MIRKIT
+========
+- Where does CORS actually works, on client Side or server side.
+	Will you get error on CORS from Backend to front end or vise-versa
+- What is liskov subsitution and when does it breaks
+- Milestone steps between client and server
+- Do we have middleware at time of return resposne
+- ADF authenticaion/ OAuth
+- How to avoid dirty reads in caching
+- Action vs result filters
+
+XORIANT
+-------
+- internal vs protected
+
+
+
+
+Web API
+-------
+- Http verb Head, Option , Trace etc
+- Difference between PUT and PST
+- Idemplotency
