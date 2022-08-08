@@ -34,3 +34,13 @@ git log [-n count]
 
 -- pull
 git pull [remote]
+
+-- Reverting A File to a previous commit:
+git log [File complete Path]
+//	Copy the commit Id
+git checkout [commit id] [file complete path]
+//Stage the changes and commit
+
+-- Git Current User
+git config user.name // get current username or use user.email
+git config user.name [new username]
