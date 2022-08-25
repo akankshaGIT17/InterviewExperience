@@ -1,0 +1,110 @@
+Grabage Collection
+- CLR manages GC
+-Allocates objects on the managed heap efficiently.
+- CLR memory concepts
+	- Each process has own virtual adderess space (VAS)
+	- Dev always work on VAS and never works on physical memory
+	- Virtual memory have 3 states (block of memory)
+		- Free : block memory has no reference
+		- Reserved : Can be used and cannot be allocated to other request. Cannot store data until this mem block is committed
+		- Commited : assigned to physiscal storage.
+		
+	- VAS can be e fregmented ie it has free blocks called holes. One single address blcok should be large enough to mem request.
+	
+- MEOMORY ALLOCATION
+----------------------
+- for new process runtime reserve some  contigous space called managed heap(MH).
+- MH have a pointer for next object in the heap.
+	- initially its set to base address
+	- All reference type allocated in MH.
+	- When new reference type is created GC creates new space just after the previous reference .
+- Runtime allcoate memory by adding value to pointer, it fast as stack.
+
+- MEMORY RELEASE
+-------------------
+- GC knows which object to release based on application roots.
+	- Application roots include static fields, local obj on thread stack
+	- Each root eiher referes to obj on heap or is null.
+- Using this list GC creates graph that contains all the obj that are reachable from roots.
+- Obj not in graph are considered garbage and are removed by GC
+- GC marks the uncreachable objects and compcats all the reachable obj together using memory-copying function.
+- GC now make ocrretion in pointer so app roots points to obj in their new location
+- To improve performance, large obj is created in separate heaps and GC dont compact these heaps.
+
+- OCCURENCE OF GC
+--------------------
+GC only occurs when (3 cases)
+- system is in low physical memory
+- memory allcoation of object on mamnaged heap surpasses the threshhold.
+- GC.Collect method is called
+
+-MANAGED HEAP
+---------------
+- CLR allocates memory to store and manage object after starting GC called MH.
+- Each managed process has a MH. All threads in that process allocate mem on same heap.
+- VirtualAlloc function is called by GCon windows to book a mem slot
+- VirtualFree is called to free
+- The less the obj allcoation on heap the less C works ie why should not allocate 32 byte to array when needed only 12 bytes.
+
+- Heap is collection of 2 heap ie Large obj heap and small obj heap
+- MH divided into 3 gen :
+	-gen 0  : New obj saved here
+	-gen 1/2 : Obj survives collections are promoted to gen 1 and 2
+	
+-Generations
+---------------
+- GC occurs on short lived obj.
+- Gen seaparaation of MH lets GC to release meme gen wise
+
+- Gen 0 : Short lived obj. GC occurs most frquently here.
+		- If large obj then they go to Large object heap (LOH) referred as gen 3.
+		Gen 3 is physical gen thats logically collected as part of gen2.
+		-when new obj is created by app GC tries to free mem here than obj in MH.
+- Gen 1 : buffere btw short lived and long lived obj.
+			- GC doesnt rexamin Gen 1 and 2 when its collecting in gen 0.
+			- If there is no meme in gen0 to create new obj then it performs collection in gen 1.
+			- Obj that survives here promotes to gen2 as tehy have larger life span
+- Gen 2 : Long-lved obj like static data
+			- obj on LOH also collected here.
+			- Reclaiming obj here also called as full garbage collection as GC has reclaimed all the prev gen before comming here.
+
+- SURVIVAL AND PROMOTION
+--------------------------
+- If survival rate is high in a gen, GC increases the threshold for that gen.
+- CLR tries : no to let GC run too frequently
+				- not allowing app working set get oo large by delaying GC.
+
+Emphemeral Generations : Obj in gen 1 and 0 are short lived, these are called empemeral.
+
+- What Happens during GC
+---------------------------
+- GC has follwoing phases: 
+	- Marking phase : finds and create list of all obj
+	- Relocating phase : updates ref to obj taht will be compacted.
+	- Compacting Phase : reclaims space from dead obj and compacts suriving obj.
+						- here GC moves surviving collection to end of segment.
+- LOH is not compacted, its creation only causes perf penalty
+- GC uses this info to chech if obj are alvie:
+	- Stack roots : stack var are provided by JIT and stack walker.
+					- JIT increase or decreases regions of code whithin which stack variables are reported to GC.
+	- GC handles :  Handles that point to managed objects and that can be allocated by user code or by the common language runtime.
+	- Static Data : static obj that are referencing  other obj. Each app domain keep track of its stack obj.
+	
+- Before GC starts all managed threads are suspended except started by GC.
+
+- UNMANAGED RESOURCES
+--------------------------
+- Obj that wraps OS resourced like file hanle/ window hanle/ network connection.
+- GC can track managed obj wrapped in unanaged resources.
+- use Dispose method	
+- Can also override object.Finalize()
+
+Background GC
+--------------
+- 0 and 1 gen are collected while gen 2 is working
+- By default always running , can be reset using System.GC.Concurrent setting
+- Foreground GC : collection in gen 0 and 1 in background
+- Dedicated threads check if there is request for FGC, then BGC(background) is topped and FGC starts.
+
+ 
+		
