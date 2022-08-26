@@ -1,0 +1,53 @@
+Shared services model:
+- IaaS : 
+	You keep : App, Data, Runtime, Middleware, O/s
+	Ms Keep : Virtualization, server, storage, Networking
+
+- PaaS : 
+	you keep : App, Data
+	MS keep : Runtime, Middleware, O/s, Virtualization, server, storage, Networking
+
+- SaaS :
+	MS keep everythingabove listed
+
+Create Web App:
+	App Service Plan (scale Up) : Dev/Test - share infra (F1) (1Gb mem 60 min compute), D1 (1Gb mem 240 min compute - $$), B2 (1.5Gb mem 60 min compute - $$)
+	ACU : Azure compute unit
+	- Production
+	- Isolaed : dedicated hardware (I1V2, I2V2, I3V2)
+
+Zone Redundancy : Instances where your application is deployed to data centers , applicable in production azure service plan
+
+VM vs Web App : 
+⦁	in web app you can use apps like GitHub to continously deploy the app.
+⦁	Vm have to rebooot and thus have some downtime, with app services we can creaed new App service at new level and then they start sending traffic to the new app without downtime 
+
+Network : to deploy your app in spcific app server. Option is available in production or higher ASP
+	We can the use firewalls, control traffic etc
+Monioring : enable Application insights
+Tags: Identify mata data of your app
+⦁	you can deploy multiple web app in single app service plan
+⦁	We can also dot FTP type deployments
+⦁	Can upgrade the plan from scale up
+⦁	Sacaling out : manual scaling, 
+⦁	Deploying  :
+		- Create web app in .net 
+		- Publish  : Azure app service - target
+⦁	Deployment Slots : Production plan
+			- To have other version of your application like staging, beta, dev etc
+			- swap : staging can swap to prod and vice-versa
+⦁	Setting s: configuration - Application Setting- Put stuff here that overrides in web config files.
+				Similarly cna secure connection strings
+⦁	Autoscaling : scale up : S1/S2 plans
+		- Autoscalig specially comes with scale out : we can set the rule 
+⦁	Diagnostic Logs :  Monitoring -> Diagnostic Logs - configure sorage account - saved in storage acoounts
+			- log stream needs to be shown from diagnostic logs
+⦁	Power shell :get-command *AzWebApp
+	- New resource group New-AzResourceGroup -Name "powershellwebapp" -Location "EastUS"
+	Create App service plan : 
+		- New resource group New-AzResourceGroup  -ResourceGrouptName "nameof resourcegroup" -Name "powershellwebapp" -Location "EastUS" -Tier "Free"
+	Create a new webapp
+		- New resource group New-AzResourceGroup  -ResourceGrouptName "nameof resourcegroup" -Name "powershellwebapp" -Location "EastUS"  -AzureAppServicePlan "azureserviceplan123" 	
+	-Create agroup
+		az group create --name cliewebapp -- location eastus
+			
