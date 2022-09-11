@@ -1,0 +1,239 @@
+1. what is Psuedocode? -- 
+2. C is a middler level landuage or high level landuage
+3. Extention of a C file -> .c
+4. How would you print "Hello"? -> printf
+5. What are looping statements?
+6. what are conditional statements? Ex
+7. whait is void main()?
+8. How would take input? -> scanf
+9. What are syntax error?
+10. What is a compiler
+11. What are header files?d
+12. getch()?
+
+
+1. C++ is a middle level landuage or a high level landuage - x
+2. Extention of C++ file?
+3. What are constructors?
+4. What is a class?
+4. diff b/w post increment and pre increment
+5. getch()?
+6. cin and cout statements
+7. what are functions
+8. reference and value type functions?
+9. preprocessors?
+10. Conio.h
+pass - 16, 4
+
+
+
+
+1.	what are I/O devices
+2.  Typesd of memory - primary secondary
+3.   RAM and ROM diff
+8. what is mail merge -x
+9. power point extention
+4.  cat command in linux - combine files
+5. ls - list files in directory 
+6. chmod - set file permissions
+7. mkdir - make new directories
+8. different types of OS
+9. what are ports
+10. role of motherboard
+--vol
+=======================MCSL217========================
+1. What is an flow chart?
+2. what is DFD? what is 
+3. What is SRS , what it includes
+	 Interface
+	 Logical Database
+	 Hardware
+	 Performance and other constraints.
+4. What is SDLC - ex COCOMO
+5. what is white box testing/ black box testing
+6. What is Data Dictionary?
+7. All the form of normalization.
+8. What are ER diagrams / weak entity - double rectangle/ strong entity - rectangle
+9. Use case diagram?
+10. Primary Key?/ CoDD rule
+11. cohesion
+12. gantt chart / pert chart
+
+ xx -- meaning of markup?-- xx
+ 
+ 
+ ===================================MCSL- 45============================
+ DBMS
+ 1. What are DDL ()-CREATE, ALTER, and DROP / DML - NSERT, SELECT, UPDATE, and DELETE 
+ 1. What are joins and its type. 
+	-	what is cartesian join/ outer join/ equi join
+ 2. what are View? 
+ 3. What are indexes
+ 4. Diff. btw primary key/ foreign key
+ 5. What is a procedure
+ 6. What are cursors-
+	implicit cursor / explicit cursor
+ 8. What are transactions
+	-	role of savepoint
+ 9. triggers and its type
+ 
+ UNIX
+ 1. Few features of UNIX
+ 2. what is kernel  
+			* A kernel is the very core of a typical OS
+			* A shell is a CLI,is a program which provides the interface between the user and an operating system 
+ 3. Fulll form -
+		telnet - remote network login to other computer 
+		ftp - network file transfer program
+		cat - copy file to display device
+		diff - compare two files and show differences
+		cp - copy files
+		ls - list files in a directory and their attributes
+		pwd - show current directory
+		mkdir - new directory
+ 4. How to define a variable in shell - $ length = 50
+ 5. Types of Shell - c shell, bourn shell, Korn shell , GNU bourn again shell
+ 6. Wrtie a comment in shell script-  # Illustrates implementing a counter with a while loop
+ 7. Extention of a bourn shell file and c shell file	- bourn : sh c: csh
+ 
+		
+===========================================MCSL16===============================================================
+
+MCSL16
+Advance Internet concepts
+1. How many types of scripting languages are ther? - vb, js
+1, how to define which script you are using in html? -<script type='text/javascript'>l
+2. print something on web using javascript - document.write('')
+4. get value of text box in js - document.getElementById('')
+3. Types of list -
+	order - <ol> <li value="51"> <ol type = “1|b|A|i|I”>
+	unordered - <ul>
+	definition - list in which each term contain its description - <dt></dt>
+	
+4. Cellpadding - space between the border of a table cell - <table cellpadding="value" > - default -1
+   Cellspacing - whitespace between the edges of the adjacent cells - <table cellspacing="value" > - default -2
+   
+5. frames
+
+6. hidden field in form
+
+7. Types of messageboxes in js
+	-Dialog - window.showModalDialog("test.htm) 
+	-Alert - single ok button 
+	-Cofirm - box in that it provldes two choices to the user, OK and Cancel
+	-Prompt - enter info
+
+8. Events in JS 
+ - onLoad and onunload
+ - OnFocus and onBlur
+
+9. Forms Array-  all forms present in html 
+
+	var numberFonns = document.forms.length
+	
+10. Data Types in JS - number, boolean, string, object, null, undefined 
+
+11. Get and POST in forms
+
+
+2. 
+
+
+5. what is DOM?
+6. full form of HTML
+
+7. new line tag in html? = <br/>
+8. paragraph tag - <p>
+9. create a text box - <input type="text" id="fname" name="fname">
+10. text box for password	
+11. input type for radio button
+12. diff between label and paragrapg
+
+13. print message in red color on web page
+
+14. what are iframes in html 
+15. how rto create a link in html -<a href="https://www.w3schools.com/">
+
+=====================BCSL013========================
+
+1.	what are I/O devices
+2.  Typesd of memory - primary secondary
+3.   RAM and ROM diff
+8. what is mail merge -x - t allows you to easily produce personalized multiple
+letters, labels, labels and more using information stored in a list, database or
+spreadsheet.
+
+9. power point extention
+4.  cat command in linux - combine files
+5. ls - list files in directory 
+6. chmod - set file permissions
+7. mkdir - make new directories
+8. different types of OS
+9. what are ports
+10. role of motherboard ,
+  chipset?
+  11. peripheral devices
+7. Ports and Connectors : A port is a connector located on the motherboard or on a
+separate adapter
+
+Ctrl + A Select all contents of the page.
+Ctrl + B Bold highlighted selection.
+Ctrl + C Copy selected text.
+Ctrl + E Aligns the l
+
+Ctrl+L Align Left
+
+
+
+================================MCSL024=========================================
+- preincrement / postincrement
+- control statement - jump stmt - Break, continue, label, return
+- Use of Finally ,
+- while vs do-while
+- JIT in java
+- Encapsulation / abstraction
+- Java applets vs java program
+- packages in java
+- what is static
+- this keyword
+- void return type vs int return type
+- why is main function void	
+===============================MCSL=204===========================
+- Features of windows 10
+- built in maitainance tools - what is task scheduler
+- file explorer - windows + e 
+- graphics api - DirectX12
+- EFS - Encryption file system  - transparent file system
+- Device gaurd?
+- Group policy management
+
+=============== 
+- types of kernel and shell
+- Korn shell?
+- Bourn-Again shell
+- Awk command - Awk is a utility that enables a programmer to write tiny but effective programs in the form of statements 
+	- syntax : awk options 'selection _criteria {action }' input-file > output-file
+2. what is kernel  
+			* A kernel is the very core of a typical OS
+			* A shell is a CLI,is a program which provides the interface between the user and an operating system 
+ 3. Fulll form -
+		telnet - remote network login to other computer 
+		ftp - network file transfer program
+		cat - copy file to display device
+		diff - compare two files and show differences
+		cp - copy files
+		ls - list files in a directory and their attributes
+		pwd - show current directory
+		mkdir - new directory
+ 4. How to define a variable in shell - $ length = 50
+ 5. Types of Shell - c shell, bourn shell, Korn shell , GNU bourn again shell
+ 6. Wrtie a comment in shell script-  # Illustrates implementing a counter with a while loop
+ 7. Extention of a bourn shell file and c shell file	- bourn : sh c: csh
+ 
+
+==========================
+- What are java servelets
+- post and get method in html forms
+- why do we need a server?
+- XML Parsers -  need parsers to break up your document into its component pieces and make
+them accessible to other parts of a program.
