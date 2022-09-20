@@ -237,3 +237,20 @@ Ctrl+L Align Left
 - why do we need a server?
 - XML Parsers -  need parsers to break up your document into its component pieces and make
 them accessible to other parts of a program.
+
+
+===================BCSL43======================
+
+- Features of Java?
+- What is multithreading : single program to perform several tasks simultaneously
+- JDK  : Java Development Kit. Software development environment which is used to develop Java applications
+- JRE : Java Runtime Environment. set of software tools which are used for developing Java applications
+- JVM : Compile java bytecode.
+- JIT : Just in time compiler- code to bytecode conversion.
+- command to run java program in cmd : javac programfile
+- Java Applet : program that is embedded in the webpage to generate the dynamic content. It runs inside the browser and works at client side.
+- Java applets vs java program
+- how to define main method in java.
+- what is encapsulation and polymorphism.
+- overloading / overridaaing
+- access specifiers - protected
