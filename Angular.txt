@@ -1,0 +1,58 @@
+
+template reference : #primaryinput etc -- starts with #
+ViewChild
+-----------
+=> NEED
+	- Appcomponent need references to many elements inside its template. thats when viewchild can be used
+	- Change behaviour of element in component class. Then we must get reference of the element. 
+	- It return ElementRef type
+	-  sample : 
+		> user.component.html
+			<span class="" #somecontent> Some Content </span>
+			
+		> user.component.ts
+			export class LatesComponent implement OnInit{
+			@ViewChild('somecontent') somecontent : ElementRef;
+	- when parent component are getting constructed means child are not created yet
+	- Lifecycle where the viewchild child are created		
+			- ngAfterViewInit
+			- ngAfterViewChildChecked
+			
+		> We need to import  ViewChild, AfterViewInit, ElementRef from @angular/core
+			user.component.ts
+				export class LatesComponent implement OnInit, AfterViewInit{
+				ngAfterViewInit(){
+				console.log('Child created here')
+				this.somecontent.nativeElemt //this returns the DOM}
+=> COMPONENT AS A ViewChild
+	- create a new component lets say dateComponent
+	> date-viewer.component.ts	
+		date: Date = new Date()
+	> date-viewer.component.html
+		{{date}}
+	> user.component.html
+		<div>
+			<span class="">
+				<app-date-viewer></app-date-viewer>
+	- inherit in user.component.ts
+	> @ViewChild{DateViewComponent} dateViewerComponent : DateViewComponent
+		ngAfterViewInit(){
+			console.log(this.dateViewerComponent.Today); //dateViewerComponent contains all variables of the DateViewComponent
+	- we can also updte DateViewComponent value in UserComponent
+	
+=> ViewChildren
+	- if we wan to access multiple decorator, then we use it.
+	- returns QueryList<> type.
+	> user.component.html
+		<div>
+			<span class="">
+				<app-date-viewer></app-date-viewer>
+				<app-date-viewer></app-date-viewer>
+				<app-date-viewer></app-date-viewer>
+	- in above case only once the console.log will print if we user ViewChild.
+	- import ViewChildren
+	> @ViewChildren{DateViewComponent} dateViewerComponent : QueryList<DateViewComponent>
+	ngAfterViewInit(){
+			console.log(this.dateViewerComponent.ToArray()); //convert QueryList toArray
+			}
+	
