@@ -1,0 +1,107 @@
+By Sudo Code
+
+
+Single Responsibility : 
+----------------------------
+		○ 1 module have one responsibility
+			§ Module : Class / package/ source code/ set of function - 
+			§ Changed by one actor
+		○ Problem : One class holds few public methods which were corresponding to different actors or stakeholders or business functions of the software.
+		○ Its fine if your public methods having change req from one stakeholder
+		○ Solution : Break the classes.
+	• Example : 
+		Ø Class:
+		Ø Menu Items	itemName
+			CantakeAway
+			Amount
+			Discount
+		Bill	List of Menu items
+		finalAmount()	customerId
+		printBill()	timestamp
+		SaveBill()
+		
+		Ø SaveBill() - if team change this function, they might add prop that would break the constructor of other classes using this class.
+			§ This should have been in a different class
+			§ If this was implemented in a different class, lets say Store class then they could change prop here without impacting the bill class
+		Ø PrintBill() - this could again change In future or different formats expected from same function
+			§ Could be part of diff class : say Printer class
+		Ø The Bill class would simply pass the bill object to these classes and would 
+
+
+Liskov Substitution Principle
+----------------------------------
+	• Able to replace actual class system by subcalss system.
+	• It states how to inherit properly
+		Inheritance	LSP
+		Correct	Not violated
+		Incorrect	Violated
+		
+	• Definition : If a function takes an instance of a class, that same function should also be able to tale the instance of of derived class from that class.
+	• Example
+		Ø MenuItem Class
+			§ Menuitem(int rpice, string name, strin description){ … }
+			§ BeverageItem extends MenuItems { 
+					BevarageItem(int price, string name, string description){
+					Super(price, name, description)
+					 }
+					Double getPticeWithDiscount(int discountPercent){
+					Return this.price-dicountPercent *. 0 * this.price;
+					}
+				
+			§ printItemPrice(MenuItem item){
+				… (BeverageItem) item.getPriceWithDiscount(discountPercent : 10) -- this is voilation
+				Else
+				Item.getPrice() -- this is not voilation
+				
+		Ø Problem : The above line is the voilation. As they have to always specify that BeverageItem , you are not able to substitue BeverageItem in place of menuitem.
+			§ You should be able to call the same functionality without having to change the way you call your functions
+		Ø Solution :  implement the functions getPrice and private getDiscount in both the classes
+			§ printItemPrice(MenuItem item){
+				Syso (item.getPrice()) }
+			§ The above conversion is removed and not LSP is not violated
+	• Thumb Rule : 
+		Ø First check inheritance of classes Is done in a proper way
+			§ Ask if the child class is really the type of parent class or is the parent class?
+		Ø Always try to replace instance of the parent class with class and see if it breaks any underlining implementation.
+	• Exercise: ParkingLot example and ways in which it can be violated.
+		
+	
+Interface Segregation
+----------------------
+	• To use abstraction we use interfaces
+	• Problem : 
+		- Fate interfaces
+		- Include lot of functionality
+		- Hide a lot of functionality
+	• Beside designing few interfaces, segregate them into multiple
+	• Extension of SRP
+	• Definition : One interface should not be handling a lot of responsibilities instead multiple interfaces should be handling different responsibilities
+		- Design your functions in such a way so that classes using them donot have many unused functions
+	• Example
+		Ø Public Interface Store { void Save();
+					Void Delete()
+					Void Update()
+					Void fetch() }
+		Ø Dbstore implements Store {…}
+		Ø CacheStore implements store {…} // need addkey, deletekey
+			§ We add these funtions in store inteface
+			§ Now dbstore would also implement those functions and they are of required here
+		Ø Solution : create 2 interface DbStore and CacheStore they can inherit from any common parent interface.
+
+Dependency Inversion
+-----------------------
+	• Bookish : High Level modules should not depend on low level modules
+			Both should depend on abstraction
+			Abstraction should not depend on implementation
+			Implementation should depend upon abstraction.
+	• High or low level modules should not depend on concrete classes. They should depend upon abstraction Ie interfaces
+	• Class A -> Class B -> Class C
+		Any change in C impacts B , any change in B impacts A.
+		Also mocking of functionality of B would require a mock in C as well, thus unit testing is hard
+	• Invert these arrow by introduction of a interface
+		Ø Class A -> Inter B  <- Class B -> Inter C <- Class C
+			B and C are dependent on interfaces, so underlining fucntion would remain same
+			Also mocking will be easy
+		
+	
+			
