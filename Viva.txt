@@ -1,5 +1,7 @@
+
+---------------------------BCSL21----------------------------------------
 1. what is Psuedocode? -- 
-2. C is a middler level landuage or high level landuage
+2. C is a middle level landuage or high level landuage
 3. Extention of a C file -> .c
 4. How would you print "Hello"? -> printf
 5. What are looping statements?
@@ -7,11 +9,16 @@
 7. whait is void main()?
 8. How would take input? -> scanf
 9. What are syntax error?
-10. What is a compiler
-11. What are header files?d
-12. getch()?
+10. What is a compiler vs interpreter
+11. What are header files?
+12. getch()?- conio.h
+13. While vs do while
+14. exit vs break
+15. pointers and array?
+16. continue
+17. Macros : #define 
 
-
+---------------------------------------------------------------------------
 1. C++ is a middle level landuage or a high level landuage - x
 2. Extention of C++ file?
 3. What are constructors?
@@ -100,11 +107,20 @@ pass - 16, 4
 ===========================================MCSL16===============================================================
 
 MCSL16
-Advance Internet concepts
+----------------------------HTML/advance HTML--------------------------
+5. what is DOM?
+6. full form of HTML
+7. new line tag in html? = <br/>
+8. paragraph tag - <p>
 1. How many types of scripting languages are ther? - vb, js
-1, how to define which script you are using in html? -<script type='text/javascript'>l
-2. print something on web using javascript - document.write('')
-4. get value of text box in js - document.getElementById('')
+text box for password	
+9. create a text box - <input type="text" id="fname" name="fname">
+11. input type for radio button
+12. diff between label and paragrapg
+13. print message in red color on web page
+14. what are iframes in html 
+15. how rto create a link in html -<a href="https://www.w3schools.com/">
+7. 
 3. Types of list -
 	order - <ol> <li value="51"> <ol type = “1|b|A|i|I”>
 	unordered - <ul>
@@ -112,48 +128,55 @@ Advance Internet concepts
 	
 4. Cellpadding - space between the border of a table cell - <table cellpadding="value" > - default -1
    Cellspacing - whitespace between the edges of the adjacent cells - <table cellspacing="value" > - default -2
-   
+
 5. frames
-
 6. hidden field in form
-
-7. Types of messageboxes in js
-	-Dialog - window.showModalDialog("test.htm) 
-	-Alert - single ok button 
-	-Cofirm - box in that it provldes two choices to the user, OK and Cancel
-	-Prompt - enter info
-
+- Get and POST in forms
+----------------------------------JS-------------------------
 8. Events in JS 
  - onLoad and onunload
  - OnFocus and onBlur
-
+- how to define which script you are using in html? -<script  type='text/javascript'>l
 9. Forms Array-  all forms present in html 
 
 	var numberFonns = document.forms.length
 	
 10. Data Types in JS - number, boolean, string, object, null, undefined 
+2. print something on web using javascript - document.write('')
+4. get value of text box in js - document.getElementById('')
+- Types of messageboxes in js
+	-Dialog - window.showModalDialog("test.htm) 
+	-Alert - single ok button 
+	-Cofirm - box in that it provldes two choices to the user, OK and Cancel
+	-Prompt - enter info
+--------------------------The internet-------------------------
+- WAN MAN LAN
+- OSI model -An open system is a model that allows any two different systems to communicate
+regardless of their underlying architecture.
+-Layers of OSI
+	- Application layer 
+	- Presentation layer
+	- Session layer
+	- Transport Layer
+	- Network layer
+	- Data link layer
+	- Physical Layer
 
-11. Get and POST in forms
+- packet switching
+- ISDN (Integrated Services Digital Network)
+- Internet Protocol(IP) - The Internet protocol specifies the rules that define the details of how computers
+communicate. 
+- Transmission Control Protocol (TCP) - TCP makes the Internet reliable. TCP solves many problems that can occur in a packet
+switching system.TCP eliminates duplicate data. TCP ensures that the data is reassembled in exactly the order it was sent 
+. TCP resends data when a datagram is lost. 
 
-
-2. 
-
-
-5. what is DOM?
-6. full form of HTML
-
-7. new line tag in html? = <br/>
-8. paragraph tag - <p>
-9. create a text box - <input type="text" id="fname" name="fname">
-10. text box for password	
-11. input type for radio button
-12. diff between label and paragrapg
-
-13. print message in red color on web page
-
-14. what are iframes in html 
-15. how rto create a link in html -<a href="https://www.w3schools.com/">
-
+- Simple Mail Transfer Protocol or SMTP
+- Intranet vs extranet
+	Intranets are basically "small" Internets. They use the same network facllitles that the
+lnternet does, but access is restricted to a limited sphere.
+	An extranet is network that connects a number of intranets into a truly mini-Internet
+Access is extended to all the intranets connected through the extranet, but, again, not
+to the Internet. E
 =====================BCSL013========================
 
 1.	what are I/O devices
