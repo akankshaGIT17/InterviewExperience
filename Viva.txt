@@ -277,3 +277,35 @@ them accessible to other parts of a program.
 - what is encapsulation and polymorphism.
 - overloading / overridaaing
 - access specifiers - protected
+
+
+=====================BCSL-22=====================
+-e- Register ? -electronic component used to hold the info as bits, can be 2bit, 4 bit and 8 bit
+- Types of register - MAR (memory Address register)
+			MBR (memory buffer register)
+			MDR (memory data register)
+			PC (program counter)
+			AR(accumulator Register)
+- Base system of binary -2 (0 1)
+		Octal - 8 (0 1 2 3 4 5 6 7 )
+		Decimal - 10 (0 1 2 3 4 5 6 7 8 9 )	
+		HExadecimal - 16 (0 1 2 3 4 5 6 7 8 9 A B C D E F)
+- seek time - time required to move disk arm to required track 
+- Rotation latency /latency - time taken to reach the begining of qrequired sector to reach head.
+-e- Flip-flop - register used to call to hold the bit, 
+-e- DRAM vs SRAM 
+- Data segment - contains static data ie variable that are present throughout the program
+- Code Segment - text segment - machine instruction of program
+- Al, Ah register - least significant byte of AX is AL, Most significant byte of AX 
+-e- cache memory - high speed memory . use to synchronise with high speed CPU
+-e - Adv of assembly language - fast as per high level lang
+- MOV insturction - used to move data from one storage space to another
+
+
+- Assemblers -converts an assembly program to an executable file, These are: .com files and .exe files
+ex ; TASM , MASM
+
+- 0 XOR 1 = 1
+ 1 XOR 1 = 0
+
+-
