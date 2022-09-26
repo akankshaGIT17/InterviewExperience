@@ -1,7 +1,41 @@
 
+- Whenever we create a class or directive we add in app.module
+- 
+- Content projection is a pattern in which you insert, or project, the content you want to use inside another component
+	- Ng-content : 
+			- single-slot content projection - most basic
+			- users of this component can now project their own message into the component
+			- used when we want to insert the content dynamically inside the component that helps to increase component reusability
+			- Add a select attribute to the <ng-content> elements
+			- Each slot can specify a CSS selector that determines which content goes into that slot. This pattern is referred to as multi-slot content projection.
+			- <ng-content select="[question]"></ng-content>
+	- Ng-template : 
+			- conditionally projection using <ng-template>
+- Directives : An instruction to DOM
+	- Components : AppComponents
+	- Attribute Directives : ngStyle, ngClass
+	- Structural : ngIf , ngFor
+- Event Bubbling : 
+- NgRx : 
+	- Subscription : Each subs to observable, its help in memory and if not released creates a memory leak.
+- ChangeDetectionStrategy : 
+	- OnPush change detection strategy for specific components
+	- ... : spread snatx: pass individual entry to the function. 
+		- console.log(..."BANANA") - o/p - B A N A N A
+		- Math.min(...."5432") : 2 here we are passing each digit individually to the min function
+		- combine 2 arrays to 1
+			- a["a","b"], b["c","d'], newaRR= [...a,...b] - ["a","b","c","d"] without spread it would have given  a nested array
+	- apply changedetection on the child component and it detects changes from the parent 
+	- The child component is updated when Angular detects the data has changed in the parent component.
+	- this.aquaticCreatures = [...this.aquaticCreatures, newAquaticCreature]; - this is an array that is marking a push intself in the parent component
+- NgZone:
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 template reference : #primaryinput etc -- starts with #
-ViewChild
------------
+
+=> VIEWCHILD
+=================
 => NEED
 	- Appcomponent need references to many elements inside its template. thats when viewchild can be used
 	- Change behaviour of element in component class. Then we must get reference of the element. 
@@ -9,7 +43,6 @@ ViewChild
 	-  sample : 
 		> user.component.html
 			<span class="" #somecontent> Some Content </span>
-			
 		> user.component.ts
 			export class LatesComponent implement OnInit{
 			@ViewChild('somecontent') somecontent : ElementRef;
@@ -17,7 +50,6 @@ ViewChild
 	- Lifecycle where the viewchild child are created		
 			- ngAfterViewInit
 			- ngAfterViewChildChecked
-			
 		> We need to import  ViewChild, AfterViewInit, ElementRef from @angular/core
 			user.component.ts
 				export class LatesComponent implement OnInit, AfterViewInit{
@@ -39,7 +71,6 @@ ViewChild
 		ngAfterViewInit(){
 			console.log(this.dateViewerComponent.Today); //dateViewerComponent contains all variables of the DateViewComponent
 	- we can also updte DateViewComponent value in UserComponent
-	
 => ViewChildren
 	- if we wan to access multiple decorator, then we use it.
 	- returns QueryList<> type.
@@ -55,4 +86,94 @@ ViewChild
 	ngAfterViewInit(){
 			console.log(this.dateViewerComponent.ToArray()); //convert QueryList toArray
 			}
-	
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+=> DIRECTIVE
+===================
+	- Modify existing behavior to elements *in template
+	- Used to manipulate DOM
+	- Types:
+		- Component directive-
+			-  directive with template
+			- shows something in DOM
+		- structural directive
+			- Change DOM by adding removing DOM element
+				- Ex : *ngIf, *ngFor, ngSwitch
+		- Attribute Directive
+			- Change appearance or behavior
+				- EX: ngStyle, ngClass
+	- Creating own
+		- @Directive decorator
+		- ElementRef dependency using constructor
+		- Listen to event, listen to DOM event on host element : HostListener
+			- Example [Attribute Directive]: Changecolor on hover
+				- @Directive({ selectore: '[highlight]' )}
+- [ ] Export  class Highlightdirective{
+      				Constructor  (private eleRef: ElementRef) {}
+      				@HostListener  ('mouseover') onMouseOver()[
+      				This.eleRef.nativeElement.style.color  ='red';
+      				}
+      				@HostListener  ('mouseleave') onMouseOver()[
+      				This.eleRef.nativeElement.style.color  ='black';
+      				}
+	- Passing input to directive
+		- Using @input
+			- Same name as directive - @Input highlight
+				- <p highlight="blue"> Highlight Directive </p>
+			- Any variable - @Input() colorName
+				- <p highlight="blue" colorName="green"> Highlight Directive </p>
+	- Example [structural directive]: adds or remove content based in value provided
+		- <div *toggle="true"><p>some text</p></div>
+		- @Directive with selector property
+		- Structural directive need 2 things and inject in constructor
+			1. ViewContainerRef : holds Reference to host element
+			2. TemplateRef : holds reference of template defined by ng-template
+		- Create @input same as directive , to add remove content
+		- ngOnChnages() lifecycle hook : when value is true or false
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+=> INTERCEPTORS
+===================
+@injectable - 
+marks class is avaiable to be provided and injected as a dependency
+
+interceptors
+-------------
+- main purpose is to capture and modify HTTP requests and responses.
+- helps in authorization, changing headers, modify resonse from server, caching etc
+- Its a TS class iplements HttpInterceptor interface
+- intercept() ->  identiifes and handles HTTP requests
+> 
+export class AuthInterceptorService implements HttpInterceptor {
+  constructor(private authService: AuthService) {} 
+ intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {  
+    const token = this.authService.getAuthToken();
+
+   if (token) {
+     // If we have a token, we set it to the header
+     request = request.clone({
+        setHeaders: {Authorization: `Authorization token ${token}`}
+     });
+  }
+
+  return next.handle(request).pipe(
+  	catchError((err) => {
+   	 if (err instanceof HttpErrorResponse) {
+       	 if (err.status === 401) {
+       	 // redirect user to the logout page
+     	}
+ 	 }
+  	return throwError(err);
+	})
+   )
+  }
+}
+
+> add the interceptor service to AppModule
+	providers: [ Authservice {
+							provide : HTTP_INTERCEPTORS
+							useClass : AuthInterceptorService
+							multi : true // tells angular that we can provide multiple values for a single token in DI
+							}//for multi interceptor add ',' after this ofbject and repeat same
+							]
+							
+
