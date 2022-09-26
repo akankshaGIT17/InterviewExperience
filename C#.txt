@@ -1,0 +1,305 @@
+
+- Shallow copy : new object and copying values. Only reference is copied. Thus original and clone refers to the same object.
+- Deep Copy : complete copy of internal reference
+- Ref type : string, array,class,delegates, list
+- Value types : string,int,float, long
+===================================================================================================================================================
+=> Async/Await
+   ===========
+-----------------------------------------------------------------------------
+Link : // https://itnext.io/async-await-what-happens-under-the-hood-eef1de0dd881
+------------------------------------------------------------------------------
+-> Concurrency vs Parallelism
+	- OS has task schedulers, the provide CPU time for each process.
+	- Process is instance of program and and each process is divided into threads.
+	- Threads: set of instruction executed by scheduler .
+	- Scheduler give versy short time to each task and if not completed in that duration then task is suspended and CPU time give to next one.
+	- Overhead : it is possible that some variables in CPU cache are realeased to provide space to new variable in threads
+	- more process run then more of overhead will happen and PC gets slower.
+	- These overehads and obove this are done by algo : Round Robin
+	- Process od putting another thread to execute : Context-Switching
+	- Parallelism : is doing more than one thing at the same time
+	- concurrency : is doing something else while someone else performs a thing you are waiting for.
+ThreadPool 
+	- Creating a thread is big task and take some mg memoty also. So big amount of threads is bad and also small amount is bad.
+	- Webapi, server has 2 cores thus 2 threads are running what if 3 request comes in. .Net creates new threads and if we use async then this miht be done in those 2 threadas only.
+	- Containers : now app runs on contains and we need well sized ThreadPool.
+Task
+	- Each task has a Id and status. And result of the task. Thats why task are generic, always return a task of something.
+	- 
+  --------------------------------------------------------------------------------------------------------------------------------
+  *********************** https://devblogs.microsoft.com/premier-developer/dissecting-the-async-methods-in-c/ *****************
+  --------------------------------------------------------------------------------------------------------------------------------
+  
+  - Understanding the await workflow
+  ===================================
+  
+	- 1) The caller point of view: 
+		- when await met in sync function currently executing thread is immediately returned.
+		- it create a promise of result.
+		- it returns when the result is ready
+	- 2) The awaited asynchronous task:
+		- await is called on a task object
+		- The task might be started at that point as in await Task.Delay(100)
+		- Or the task might already be running, as in the await taskA
+	- 3) The task returned by the async method is the code remaining once the awaited task terminates: 
+		- await doesn't let any wasted thread 
+		- When the task finishes, await keyword chooses a thread to resume the remaining code in the async method that is after the keyword await
+			- there are really 2 tasks involved in an async method
+				- The task following the await keyword that runs the CPU bound or I/O bound code.
+				- The task returned by the async method that represents the remaining code to run upon the awaited task termination.
+			-   for (int i = 0; i < 5; i++) {
+					         ConsoleWriteLine($" A{i}");
+					         await Task.Delay(100); // a new thread runs in loop for each iteration
+						      }
+				the code executed after an await keyword can eventually be executed by a random thread
+						
+=---------------------------------------------------------------------------------------------------------------------------------------------------------
+=> Threads and threading
+  ======================
+Processes : execution of program. Os use processes to separate appp from being executed.
+Thread : basic unit to which OS allocate time.
+		- each thread has a scheduling priority and maintain structure to save thread context when thread execution is paused
+		- Thread context : info needed by thread to resume execution, including CPU registers and stack.
+		-Can execute any part of program including area used by another thread.
+- Many threads can run in context of process.
+- Primary thread : .Net program starts ith single thread 
+- Worker Thread : threads created by primary thread.
+
+* When to use multiple threads : 
+	- to increase responsiveness of your application.
+
+Mutlithreading can be used : Task Parallel lib (TPL) or Parallel Linq(PLINQ)
+TreadPool : Provides collection of worker threads.
+	- Object -> ThreadPool
+	- Thread.Sleep : lets the main thread exit before thread pool thread runs.
+	- Thread pool uses background thread which do not keep app running if all foreground threads are terminated (race condition)
+	- Sample
+		static void main(){
+			ThreadPool.QueueUserWorkIntem(TheadProc);
+			Print("Main thread does some work and sleeps";
+			Thread.Sleep(1000);
+			Print("Main thread exits");
+			}
+		static void TheadProc(Object stateInfo){
+		Print("Hello from thred pool");
+		}
+	}
+	// Out :Main thread does some work and sleeps
+	// Hello from thred pool
+	// Main thread exits
+	- Task or Task<TResult> uses threadpool threads.
+	- TP conatins background threads ie IsBackground is True
+	- when TP resuses a thread, its local sotrage or fields that are marked ThreadStaicAttribute are not cleared.
+	- There is 1 threadpool per process.
+	- No of threads in threadpool can be changed by SetMaxThreads method.
+	
+Exception in Managed Threads
+--------------------------------
+
+// Micoroft - search with above hading only
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+=> EVENTS
+==============
+Events in C#
+---------------
+Event : based on publisher/subscriber model
+		- events are type publishers that allow interaction of pub/subscriber
+		- they use delegates fir pub/subscriber
+		> sampe
+			public delegate void MyDel();
+			public event MyDel MyDelEvent;
+		
+			> BlogNS.cs - 
+				class Blog{
+				 public string BlogNAme {get;set;}
+				 public BlogSubscriptionService BlogSubscriptionService {get;set}
+				 
+				 public Blog()
+				{
+					BlogSubscribtionService = new BlogSubscriptionSerivce();
+				}}
+			> BlogSubscrptionService - broadcaster - subscribe Reader, invokes ArticleCompleted()
+			
+			public delegate void SubscribeDelegate(string blogName, string articleName);
+			public class BlogSubscriptionSerivce
+			{
+				public event SubscribeDelegate BlogSubscribeEvent;
+      
+
+				public void ArticleCompleted(string articleName, string blogName)
+				{
+					if (BlogSubscribeEvent != null)
+					BlogSubscribeEvent(articleName, blogName);
+				}
+			}
+			
+			> ReaderNS.cs - subs event of BlogSubscrptionService, subs in SubscribeForBlog()
+				 public class Reader
+					{
+						public string ReaderName { get; set; }
+
+						public Reader(string readerName)
+						{
+							ReaderName = readerName;
+						}
+
+						public void SubscribeForBlog(Blog blog)
+						{
+							blog.BlogSubscribtionService.BlogSubscribeEvent += BlogSubscribtionService_BlogSubscribeEvent;
+						}
+
+						private void BlogSubscribtionService_BlogSubscribeEvent(string articleName, string blogName)
+						{
+							Console.WriteLine("{0} is read by {1} in the blog {2}", articleName, ReaderName, blogName);
+						}
+					}
+					
+			- if null is assigned to event then we get syntax error
+			
+			> WriterNS - ArticleCompleted() -> calls BlogSubscribtionService -> invokes BlogSubscribeEvent -> notiedies Reader class 
+				public class Writer
+					{
+						private Blog blogProp;
+						public Writer(Blog blog)
+						{
+							this.blogProp = blog;
+						}        
+
+						public void ArticleCompleted()
+						{
+							if (blogProp == null)
+								blogProp = new Blog();
+
+							blogProp.BlogSubscribtionService.ArticleCompleted("Events in .NET", blogProp.BlogName);
+						}
+					}
+					
+			> MAin call
+					static void Main(string[] args)
+						{
+							Blog myBlog = new Blog() { BlogName = "Dot Net For All" };
+							myBlog.BlogSubscribtionService = new BlogSubscriptionSerivce();
+
+							Reader reader1 = new Reader("Reader1");
+							reader1.SubscribeForBlog(myBlog);
+
+							Reader reader2 = new Reader("Reader2");
+							reader2.SubscribeForBlog(myBlog);
+
+							Writer writer = new Writer(myBlog);
+							writer.ArticleCompleted();
+
+							Console.Read();           
+						}
+			- reader1 and reader2 notified when article is completed
+			
+		* Events allow only 2 operator +, -
+	=> Why use?
+		- if user only delegates , once of the sub can reassign delegate to new handler
+		- All subs can e cleared by one sub
+		- Any one sub can broadcast to other subs 
+    
+   ---------------------------------------------------------------------------------------------------------------------------------------------------------------
+   => Authentication Authorization
+   =================================
+  • Web api assumes that authentication happens in the host. For web its IIS the host.
+	• When host authenticates the user it creates a principal, which is an Iprincipal object
+	• Host attach pricincipal to the current thread.
+	• Prindipacl contains identity object that cibtains info about the user.
+	• If user is authenticated then Identity.Isautenticated = true
+	• HTTP message handlers
+		○ Instead of host we can put the logic in the message handler.
+		○ When to user handler :
+			§ Http module sees all requwst but handler only sees through web api.
+			§ Per-route message handlers 
+	• If performing own auth then set ther 2 as well :
+		○ Threadd.CurrentPrincipal : sets thread principal
+		○ HttpContext.Current.User  :specific to ASP.Net
+	• Authorization:
+		○ It happens  later in the pipeline closer to the controller.
+		○ Athorization filter run before controller action.
+		_____________________________________||______________________________________
+    |________________AUTHENTICATION______||___________AUTHORIZATION_____________|
+		|_________IIS________________________||_____________________________________|
+		| HTTP Module | Http Message Handler || Authorization Filter |  Controller |
+    |____________________________________||____________________________________|
+
+
+- [Authorize] attribute can be added in the global level, class level and api level.
+- Properties can have [AllowAnonymous] and the same api can have [Authorize]
+
+		IAuthorizationFilter
+				|
+		AuthorizationFilterAttribute
+				|
+		AuthorizaAttribute
+		
+- Role
+	- A role is a named set of principals that have the same privileges with respect to security (such as a teller or a manager). A principal can be a member of one or more roles. Therefore, applications can use role membership to determine whether a principal is authorized to perform a requested action.
+Authenticati    on
+- Type : 
+	- Role-Based
+	- Resource based
+	- Claims based 
+	- Policy based
+	- View Based
+⦁	AuthotizationAttribute - [Authorize]-  appliced on controller, action razore pages. 
+⦁	[AlowAnonymouse]  attibute removes the authentication,
+	- When used with Authorize attribute Authorize is ignored.
+⦁	Role - Based Authenticcartion
+⦁		- Roles are exposed using IsInRole method on the ClaimsPrincipal class.
+⦁		Roles are claims but not all claims are roles.
+⦁		Claims are info about the user.
+⦁	Roles-based auth service is registered in Program.cs using AddRoles
+⦁	[Authorize(Roles = "HRManager, Finance")]
+⦁	Policy Based Roles
+⦁	        Roles can be expressed in terms of Policy as well 
+⦁		builde.Services.AddAuthorization(o=> { o.AddPolicy("RolePolicy", plociy=>policy.RequiredRole("Admin"));
+⦁	Claim Based Authentication
+⦁		Claim is value pair that defines what subject is and not what it can do.
+⦁	These are policy based
+⦁	Claims contains the requested resource
+⦁	builder.Services.AddAuthorization(options =>
+	{ options.AddPolicy("EmployeeOnly", policy => 	policy.RequireClaim("EmployeeNumber"));
+	});
+⦁	Policy Based
+builder.Services.AddAuthorization(options =>
+{   options.AddPolicy("AtLeast21", policy =>
+        policy.Requirements.Add(new MinimumAgeRequirement(21)));
+});
+⦁	Add policies to endpoints
+		app.MapGet("/helloworld", () => "Hello World!")
+   		 .RequireAuthorization("AtLeast21");
+⦁	AuthorizationMiddleware : 
+⦁		class SampleAuthorizationMiddlewareResultHandler : IAuthorizationMiddlewareResultHandler 
+	cAN conatin a methoed HandleAsync and return the unathorized result as desired
+⦁		Register the above method in program.cs
+⦁		builder.Services.AddSingleton<IAuthorizationMiddlewareResultHandler, SampleAuthorizationMiddlewareResultHandler>();
+⦁	View Based Authorization
+⦁		use @inject directive :@inject IAuthorizationService AuthorizationService
+@if ((await AuthorizationService.AuthorizeAsync(User, Model, Operations.Edit)).Succeeded)
+{
+    <p><a class="btn btn-default" role="button"
+        href="@Url.Action("Edit", "Document", new { id = Model.Id })">Edit</a></p>
+}
+   
+   
+   ---------------------------------------------------------------------------------------------------------------------------------------------------------------
+   => Manners of Execution Linq
+   ===============================
+   - Immediate Execution
+	- data source is read and operation is performed once.
+	- all operations that returns scaler result execute immediately.
+	- force by using Enumerable.ToList() or Enumerable.ToArray()
+	- Results are retrieved once the then stored for future refernces
+- Deferred Execution
+	- operation not performed at point the code is written.
+	- performed when query variable is enumerated like in case of foreach
+	- means result depend on the content of the data source and not on query defination.
+	- if query is executed many times then the result will differ each time.
+	- IEnumberable<T> or IOrderedEnumerable<TElement> execute in deffereed time.
+	- Query reuse : as query is executed each time results are iterated
+	- Further division of operators that use it:
+		- Streaming : donot read all the data source before they yield the elements.
+		-Non-streaming : must read all data source before they yield result element.
