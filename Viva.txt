@@ -18,23 +18,25 @@
 16. continue
 17. Macros : #define 
 
----------------------------------------------------------------------------
+-------------------------------BCSL32--------------------------------------------
 1. C++ is a middle level landuage or a high level landuage - x
 2. Extention of C++ file?
-3. What are constructors?
+3. What are constructors? type - default, copy, parameterized
 4. What is a class?
 4. diff b/w post increment and pre increment
 5. getch()?
 6. cin and cout statements
 7. what are functions
-8. reference and value type functions?
+8. call by reference and call by value ?
 9. preprocessors?
 10. Conio.h
+11. structures?
+12. access specifier - private public protected
 pass - 16, 4
 
 
 
-
+------------------------------------------------------------------------------------------
 1.	what are I/O devices
 2.  Typesd of memory - primary secondary
 3.   RAM and ROM diff
