@@ -1,0 +1,36 @@
+	• Process of partitioning data in database into smaller chunks called shards
+	• Also called horizontal slicing 
+	• Normalization - vertical slicing
+	• Main reason here is scalability
+	• NEED
+		○ Data throughput - decompose complex query into multi independent subqueries and run parallelly
+	• ALGO
+		○ Partition by Key Range
+			§ Assign continuous range keys to each partition to directly request appropriate node in the cluster
+			§ In each partition can maintain sorted order. Helps In range scans 
+			§ Key range partition helps in parallel processing
+			§ If not done carefully can lead to hotspots where only few servers are busy and others are idle.
+		○ Partition by Hash of key
+			§ Assign each partition a range of hashes  and every key whose hash falls in partition range will be stored in that partition
+			§ Need to this algo rises due to the hotspot issue of above algo
+			The issue is resolved as usage of hash function will distribute the keys evenly across all the shards
+			§ Dis : Efficient range queries become hard in this case as function will distribute the keys randomly and evenly on each partition
+				□ Whole query has to be processed on each partition even if contain specific range of data or not.
+	• HORIZONTAL PARTITIONING VS SHARFDING
+		○ HORIZONTAL - we split table into multi tables in same database instance 
+		SHARDING - we do same on multi db instances
+		○ HORIZONTAL - since we use same db instance so name of partitioned tables have to be different
+		SHARDING - name can be same as instance are different
+		
+	•  ADV OF SHARDING
+		○ Availability is high - one shard crashes other still works
+		○ Security - certain shards can have access control on who can access which shared
+		○ Faster query processing - since dataset is smaller so index size is also smaller. 
+		○ Increased read write throughputs
+	• Dis 
+		○ Complexity - server needs to know how to route the query to which shard
+		○ Transactions and rollbacks on two diff tables in same shard is not possible so transaction across shards is not possible.
+		○ Joins are expensive on tables across shards
+				
+			
+	
