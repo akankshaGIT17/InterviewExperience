@@ -1,0 +1,42 @@
+	SOA
+  - Takes advantage of reusable components 
+	- Each service comprised of the code and data integration required  ot execute business function
+	- Service interface provide loose coupling .
+	- Dev team save time by reusing the components in other apps 
+	- Risk : shared access t ESB, If issue arise , it effect all connected services.
+	- Mostly XM  based
+	- Bfore it : connecting data to app needed complex point-to-point  integration  for each new dev project.
+	- Services : 
+		○ Fucntional  :critical to business
+		○ Enterprise : implement functionality
+		○ Application :used to develop and deploy apps
+		○ Infrastructure : like security, authentication
+	- Each service has 3 components
+		○ Interface : how service provider execute request from service provider
+		○ Contract : defines how service providers and service consumer should interact
+		○ Implementation : the service code.
+		
+		
+MICROSERVICES
+
+	- Loosely coupled, reusable and specialized components that work independently from on another
+	- Uses higher cohesion also called as bounded context
+		○ Relation btw component and data as standalone entity with very few dependencies
+	- Rather being adopted enterprise wide they communicate through api.
+	- These are cloud native, operating in containers, makes them scalable and portable
+	- Services produces that are more fault tolerant than alternatives.
+
+DIFFERENCE
+	- Scope: SOA has enterprise scope while MS has app scope
+		○ Reuse : SOA reusability if integrations is main goal. Reusability and component sharing in SOA increased scalability and efficiency.
+			§ MS : MS component reused at runtime throughout an app results in dependencies that reduces agility and resilience.
+				□ Ms usually prefers resuse code by copying and accepting data duplication to improve decoupling.
+		○ Synchronous calls : SOA uses RESTFul api's
+			§ MS : interaction patterns based on async comm is preffered like event sourcing .
+		○ Data Duplication : SOA all obtain data sync-ly and alter data at its primary source, reduces use of complex data sync patterns
+			§ MS : each MS has there own database to access this sometime gices rise to duplication of data as well.
+	- Communication : SOA, each service share common comm called ESB (enterise service bus) , sometimes it becomes single point of failure.
+		○ MS: each service can use diff comm protocol
+	- Interoperabilty : MS uses REST/HTTP SOA uses SOAP/MSMQ/AMQP
+	- Service granularity : MS each service is build to do one thing, SOA : dependesa, service can handle single task or an enterprise level task
+	- Speed: SOA is good for dev and troubleshooting thus slower than MS
