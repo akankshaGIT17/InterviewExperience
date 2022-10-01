@@ -36,19 +36,25 @@ pass - 16, 4
 
 
 
-------------------------------------------------------------------------------------------
+---------------------------------BCSL013------------------------------------
 1.	what are I/O devices
-2.  Typesd of memory - primary secondary
+2.  Typesd of memory - primary(RAM,ROM) secondary (cd rom hardrive)
 3.   RAM and ROM diff
 8. what is mail merge -x
-9. power point extention
+9. power point extention -pptx
 4.  cat command in linux - combine files
 5. ls - list files in directory 
 6. chmod - set file permissions
 7. mkdir - make new directories
+- grep - searches a file or files for lines that match a provided
+regular expression 
+- who am i -  who is logged onto this terminal
 8. different types of OS
 9. what are ports
-10. role of motherboard
+10. role of motherboard vs CPU
+11. Full form URL : Uniform Resource Locator
+12. BIOS : basic input output system.
+
 --vol
 =======================MCSL217========================
 1. What is an flow chart?
@@ -311,3 +317,63 @@ ex ; TASM , MASM
  1 XOR 1 = 0
 
 -
+================================MCSL229 =========================================
+
+- cloud service providers  : AWS, Azure, GCP
+- What are different cloud computing services - Private, Public or Hybrid
+
+- Private cloud services are delivered from a business data center to
+internal users.
+Public cloud model, a third-party provider delivers the cloud
+service over the Internet.
+Hybrid cloud is a combination of public cloud services and on-premises
+private cloud 
+
+- Types of cloud computing
+	- IaaS -  cloud computing offering in which
+a vendor provides users access to computing resources such
+as storage, networking, and servers.
+	-Platform as a service (PaaS) is a cloud computing offering that provides
+users with a cloud environment in which they can develop, manage, and
+deliver applications.
+	- Software as a service (SaaS) is a cloud computing offering that provides
+users with access to a vendor’s cloud-based software. Users do not install
+applications on their local devices. 
+
+- Network virtualization is a method of combining the available
+resources in a network by splitting up the available bandwidth into
+channels, each of which is independent from the others, and each of
+which can be assigned (or reassigned) to a particular server or device in
+real time. 
+-Storage virtualization is the pooling of physical storage from multiple
+network storage devices into what appears to be a single storage device
+that is managed from a central console.
+-Server virtualization is the masking of server resources (including the
+number and identity of individual physical servers, processors, and
+operating systems) from server users. 
+
+-Virtualization is software that separates physical infrastructures to create
+various dedicated resources. It is the fundamental technology that powers
+cloud computing. 
+-Kernel-based Virtual Machine (KVM)
+
+- Amazon EC2 : tool to create VM.
+
+---------------------------------data science-------------------------------
+-Simple Linear Regression: This kind of regression uses only one
+independent variable, as shown in the equation above.
+• Multiple Linear Regression: The relationship between two or more independent variables and a single dependent variable is estimated using multiple linear regression. 
+- logistic regression : In R Programming, logistic regression is a classification algorithm for determining the probability of event success and failure. 
+- cycle- 
+---------------------------------R------------------------
+-- DATA TYPE Allowable Values
+Integer 	Values from the Set of Integers, Z
+Numeric 	Values from the Set of Real Numbers, R
+Complex 	Values from the Set of Complex numbers,
+Logical 	Only allowable values are True ; False
+Character 	Possible values are -“x”, “@”, “1”, etc
+- Dataframe:
+A data frame represents a table or a structure similar to an array with two
+dimensions It can be interpreted as matrices where each column of that matrix
+can be of different data types.
+
