@@ -175,5 +175,56 @@ export class AuthInterceptorService implements HttpInterceptor {
 							multi : true // tells angular that we can provide multiple values for a single token in DI
 							}//for multi interceptor add ',' after this ofbject and repeat same
 							]
-							
+--------------------------------------------------------------------------------------------------------------------------							
+PIPES
+=======
+- simple dunctuions to use in template expression to accept an input value and return an transformed value.
+> ng new pipes
+- syntax : {{input | pipeName}}
+		(multi param) - {{ input| pipeName: param1 param2:
+	> Date Pipe
+	------------
+		- export class AppComponent { birthday = new Date(1996, 3 ,21) }
+		- My birthday is {{birthday | date}}
+		- (multi) : {{ value_expression | date [ : format [ : timezone [ : locale ] ] ] }}
+			- {{ birthday | date: 'dd/MM/yyyy' }}
+-Types
+--------
+	- pure  : default , called when Angular detects a change in the passed value
+	- impure : called for every change detection cycle no matter whether the value changes
+				- add pure:false in the @pipe decorator where we provide the name of the pipe.
+- Pipe Chaining
+------------------
+	- {{ birthday | date: 'fullDate' | uppercase }}
+	- pipes applied from left to right
+	
+- Build - in Pipes
+-------------------
+	- CurrencyPipe, UpperCasePipe/LowerCasePipe/TitleCasePipe 
+	- PercentPipe - input is number to string 
+	- DecimalPipe - numer to string
 
+- Custom Pipes
+----------------
+	> ng g pipes/age
+	> age.pipe.ts
+	------------SYNTAX--------------
+		import {Pipe, PipeTransform} from '@angular/core';
+		@Pipe({
+			name : 'age' })
+		export class AgePipe implements PipeTransform {
+			transform( value: any, ...args: any[]): any {
+				return null;}
+				}
+	-------------Ex------------------
+	export class AgePipe implements PipeTransform {
+		
+		transform(value: Date, capitalize: boolean = false, withEmojis: boolean = false): any {
+			const currentYear = new Date().getFullYear();
+			const dobYear = value.getFullYear();     const age = currentYear - dobYear;
+		
+			return age + ' years old';
+		}}
+		
+	{{ birthday | age }}
+	{{ birthday | age: true: true }}
