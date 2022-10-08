@@ -1,0 +1,59 @@
+Hashing
+-----------
+	- balance binary search tree time - O(log n)
+	- Hashing O(1), o(n) - worst
+	- key value pair - hash table
+	- hash function - converts big every key is mapped to a unique slot 
+			- Good Hash function
+					~ efficiently computable
+					~ iuniformly distributed key
+					~ minimise collisions
+	- Collision handling -  collisions - two key can have same hash value
+	 - Techniques 
+		- chaining - make each cell of hash table point to a link list with same hash value but needs extra memory outside the table.
+		- open adressing - either the value in table is present or NIL. search every element.
+	
+Separate chaining
+-------------------
+	- Insert time O(1), search & delete - O(1)
+	- implement array  as a link list
+	- when many elements are hashed into same slot then they are pushed into a sigly linked list.
+	- search key K by linear traversing of link list
+	- here if 2 element have same hash value then we store in same link list one after the other.
+	- usualy used when it is unknown  how many keys may be inserted or deleted.
+	- DS Used
+	-------------
+		~ Link List 
+		~ Dynamic sized array.
+		~ Self balancing BST (AVL, Red-Black)
+	Dis : 
+	-----
+	- wastage of space
+	- if chaining is long then search time can become o(n)
+	- not as good as open addressing
+	
+Open Addressing (closed hashing)
+-----------------
+	- all elements stored in hash table
+	- table must be bigger or equal to total number of keys.
+	- Linear probing 
+		- sequential search in hash table.
+		- if location already occupied then check for next location.
+		- issues :
+			 - Primary clustering  : many smiliar elements form a group and it start takinh time to find a free slot.
+			 - Secondary Clustering : two records have same collision chain if there initial position is same.
+	-Quadratic probing 
+		- also called as mid-square method.
+		- we look at i^2 in the i'th iteration.
+	- double hashing : 
+		- increment for the probing is computed bu using another hash function.
+		
+		
+chaining vs addressing 
+	- chaining is simple to implement.
+	- chaining hash table never fills up, cam add more elements. OD table may become full.
+	- chaining is used when it is unknown how many amd how frequently keys may be inserted. OD useful when frequency and no of keys are known
+	- Chaining has low cache performance than OD
+	- chaining has spce wastage OD can ise slot if input doesnt match.
+	- chaining use extra space for links OD dont use links.
+	
