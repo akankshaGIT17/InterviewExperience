@@ -1,0 +1,55 @@
+Example:
+- Stacks and queues
+- Image Gallery
+- Music Player
+- Browsers
+- HashMap and HashSet
+Representation
+- 1 int = 4bytes
+- One node is 8 bytes in LL
+- Node is a data type
+	- Created using class
+		- Class Node{
+				Int data;
+				Node next;
+			Public Node(int data){
+			This.data = data;
+			This.next = null }
+- Heap memory
+	- New = assign value in heap
+- Deletion :
+	- We can swap btw the node that needs to be deleted
+	- Always delete the rest, but that’s not correct as it is memory leak
+- Arrays vs LL
+	- For array memory allocator will search for contigous memory of 227 bytes gor assy of size 7
+	- For LL  of size 7 it will search for 8 bytes ir for each not and not contigously
+	- Array is not efficient in memory but LL is dynamic
+	- Array can be randomly acess in case of binary search but LL cant be random.
+	- TC Array delete : O(n) LL O(1)
+- Middle Of LL
+	- If length known
+		- Divide the length by 2
+		- Usually take temp var for head
+		- Length : we have to take a while loop and increment a var t until temp which was originally pointing to head, temp->next = null
+			- Temp = head;
+				While(temp!=Null)
+				{ t++ ; 
+				Trmp = temp->next; }
+- Binary number linked list
+	- While(temp!=null)
+			{ ans *=2;
+			Ans += temp->val
+			Temp = temp->next}
+			 
+- Doubly link list
+	- Next and prev pointer
+	- Dis : little bigger size as we have prev as well
+	- Creating a Hashset : simple way is to create a list and check value
+	  
+	   Add(12) Contain(12). Issue is when the size of list increases many times. Then to create a hashmap we use chaning technique in list
+		- Chaining -
+			- Generate an index using hashing : int % 11 eg 22 % 11=0
+			- Inside the list
+			- Collision: if user try to insert 22 -> 22 % 11 = 0 , 33 %11 = 0. All these numbers are returning 0
+			- We can use LL to insert in same index. Ie LL in every index. Thus it becomes list of LL
+					 
