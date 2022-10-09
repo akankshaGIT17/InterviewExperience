@@ -1,0 +1,44 @@
+Bubble sort - compare with next greater element and reduce by i.
+-------------
+- space : O(1) time : O(n^2)
+- simple swapping of the current element being greater than the next.
+- here we run two loops 
+	one is outer loop - i (1 -n)
+		one is inner loop - j  (1 - n-i-1)
+			if a[j] > a[j+1]
+				swap(j,j+1)
+the size of j becomes smaller and smaller with each iteration and the last elements left are the sorted ones.
+
+
+Selection Sort -  (comparison with min_val)
+-----------------
+- space : O(1) time : O(n^2)
+- done in two loop and each iteration consider the element as min and compare with next element in second loop and swap
+- swap with the min index value
+- one  loop - i (1-n)
+	set min_val = i
+		second loop j = i+1 - n
+			if (j > min_val)
+			min_val = j
+	swap (arr(min_val), arr[i])
+
+
+Insertion Sort - key element involved where inner loop run one less than outer until key is greater than inner element.
+----------------
+- space : O(1) time : O(n^2)
+- two loops
+- outer loop - i (1-n)
+	key : arr[i];
+	inner loop - j (i-1 - n)
+		reduce j till 0 && j should be > than key
+		arr[j+1] = arr[j]
+		j = j-1
+	arr[j+1] = key
+	
+
+Merge sort
+Quick sort
+Heap sort
+Counting sort
+Radix sort
+Bucket sort
