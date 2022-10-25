@@ -228,3 +228,105 @@ PIPES
 		
 	{{ birthday | age }}
 	{{ birthday | age: true: true }}
+==========================================================================================================================================================
+PARTIAL CLASSES
+----------------
+Partial (TS) - make all of the properties of a type optional. This means developers will no longer have to provide values to all properties of a type
+
+			>    function updateTodo(todo: Todo, fieldsToUpdate: Partial<Todo>) {
+				  return { ...todo, ...fieldsToUpdate };
+				}
+				
+
+
+==========================================================================================================================================================
+MODULES
+----------
+- useful in splitting app in smaller parts and lazy load each separately
+- create libraries of components that can be imported into other apps
+- essential in template parsing (both In time and Ahead of time compilation)
+- used to clarify which componenet and directive ti be used publically or internally
+EX : Recactive form module contains directoves /services/pipes/components that can be used together.
+	Router module
+	
+	> import {BrowserModule{ from '@angular.platform-browser'
+	...
+	@NgModule({
+		declarations : [AppComponent, MyComboboxComponent, ...],
+		imports : [BrowserModule],
+		providers : [USerService, LessonsService]
+		})
+	export class ExampleModule{}
+- If inheriting in the module means that service is available for injection anywhere in app
+- Not creatig a app wide nested DI structure is to help in application-wide -singleton
+- Issue with Main AngularJS : eveything was in single DI bucket, means we can override lazy laoded services with newer version anywhere in the app
+	
+=> Application root module
+-----------------------------
+	- one root module, each component, directive, pipe are associated with only one module.
+	- what identifies as root modelu?
+		-> conventional name as appmodule
+		-> basic directives like ngIf, ngFor etc BrowserModule etc
+		-> Bootstrap property -> that used for bootstrap entry point of app
+		
+	- to make any component publically available we need to export it in the module.
+	- If try to use component directl without importing in module we get exception
+	- imports :  makes the exported declarations of other modules available in the current module
+	- declarations : to make directives (including components and pipes) from the current module available to other directives in the current module. Selectors of directives, components or pipes are only matched against the HTML if they are declared or imported.
+	- providers : to make services and values known to DI (dependency injection). They are added to the root scope and they are injected to other services or directives that have them as dependency.
+		~ provideIn : each child module would need to specify this while using the service.
+	- bootstrap : specifies which component should be loaded by Angular when the app-level module loads
+		
+	
+=> Dynamic Lazy Loading and Just in time compilation
+	- adding .bootstrapModule(AppModule); in front of the module is Just in time compilation
+	- Compiles your application in the browser at runtime. Default until Angular8
+	- Lazily loaded modules has separate DI context.
+	
+=> Ahead of time compilation
+	- converts the Angular HTML and typescript to javascript
+	- Compiles your application and libraries at build time
+	-default starting in Angular 9.
+	- extracts metadata to interpret the parts of the application
+	- metadata explicitly in decorators - @Component() and @Input()
+		-> Compilation Phase : 
+			+ Code Analysis
+			+ Code generation
+			+ Template Type Checking 
+			
+	- We can set AOT false while running ng serve or ng build and setting aot to false (true by default)
+=> Feature Modules
+	- A feature module is meant to extend the global application with a new set of features: for example, new screens and injectable services.
+	- delivers specific set of functionality like workflow , forms etc
+=> Shared Modules
+===================
+		- import the required module in imports property.
+		- include the same module in the exports proprtyy as well.
+		- With Lazy loading -> static forRoot(): ModuleWithProviders{
+								returns {
+									ngModule: ShareModule,
+									providers: [LazyLoadingModule]}};
+							import the above module with .forRoot() in the main module.
+	
+======
+=> Eager Loading : modules loaded before the application starts. Default module-loading strategy.
+				- used to load core modules and feature modules that are required to start the application.
+				- Import EgerLoading module in appModules
+				- Register all components in app-routing.module.ts 	with forRoot strategy.
+				> @NgModule({
+					  imports: [RouterModule.forRoot(routes)],
+					  exports: [RouterModule]
+					})
+				
+=> Lazy Loading : modules loaded on demand. Helps app start faster
+				- all other modules could be lazily loaded on demand after the application started.
+				- Register all components in lazy-loading.module.ts 	with forChild strategy.
+				> @NgModule({
+					 imports: [
+						RouterModule.forChild(routes)
+					  ]})
+				>loadChildren property in the app-routing.module.ts
+				- Without routing we can use - createNgModuleRef - Lazy loading a module, only when it is required. (//https://www.wittyprogramming.dev/articles/lazy-load-component-angular-without-routing/)
+=> Pre-Loading : modules loaded auto after app starts
+				- used to load specific feature modules that are very likely to be used soon after the application started.
+   
