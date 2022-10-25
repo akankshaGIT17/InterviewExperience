@@ -321,6 +321,7 @@ EX : Recactive form module contains directoves /services/pipes/components that c
 => Lazy Loading : modules loaded on demand. Helps app start faster
 				- all other modules could be lazily loaded on demand after the application started.
 				- Register all components in lazy-loading.module.ts 	with forChild strategy.
+				- shared modules uses forRoot()
 				> @NgModule({
 					 imports: [
 						RouterModule.forChild(routes)
