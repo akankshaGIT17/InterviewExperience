@@ -329,4 +329,12 @@ EX : Recactive form module contains directoves /services/pipes/components that c
 				- Without routing we can use - createNgModuleRef - Lazy loading a module, only when it is required. (//https://www.wittyprogramming.dev/articles/lazy-load-component-angular-without-routing/)
 => Pre-Loading : modules loaded auto after app starts
 				- used to load specific feature modules that are very likely to be used soon after the application started.
-   
+   ngOnInit() vs Constructor
+---------------------------
+	- lifecycle hook by angular, indicating that angular is done creating instance 
+	- onstructor only used for DI work and instantiating class members
+	-  constructor() {
+     // Called first time before the ngOnInit()	
+	   ngOnInit() {
+     // Called after the constructor and called  after the first ngOnChanges() 
+  
