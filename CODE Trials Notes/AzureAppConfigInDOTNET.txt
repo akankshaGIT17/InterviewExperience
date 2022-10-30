@@ -1,0 +1,39 @@
+Azure App Config in .Net
+=============================
+Azure -> AppConfig -> Create -> [Create normal]
+- install nuget -Micorsif.Azure.appconfiguration.AspNetCore
+- Program.cs
+>	webBuilder.ConfigureAppConfiguration(config =>
+		{
+		var connectionstring = config.Build().GetConnectonString("appconfiguration");// this takes value from appsettings. This is the app config in azure string. Ideally should be in scecrets manager.
+		config.AddAzureAppConfiguration(op=> op.Connect(connectionstring);
+		op.ConfigureRefresh(refresh =:>
+		{
+		refresh.Register("weather:count"); //To add for all keys : sentinel key. let say sentinel key is refreshAll
+		//the above code becomes : 
+		refresh.Register("refreshAll",true);
+		.SetCacheExpiration(TimeSpan.FromSeconds(5));//after every 5 second it refreshes
+		}
+- in the service/controller where want to use value from app config inherit IConfiguration from constructor.
+- _configuration.GetValue<int>("weather:count"); // weather:count is the key name.
+- these value once updated wont be visible in the app as these were loaded at the time when app started.
+- for auto update in app config to app directly in real time : 
+	IOptionSnapshot can be used, this will take a class of your keytypes.
+	the above class needs to be registered at dependency injection in startup class.
+	IConfiguration is already inherited in the startup
+	in the configuration method 
+		service.Configure<ClassWithAzureconfigKeys>(_config.GetSection("weather");// will refresh keys with postfix of weather.
+		
+		
+		service.AddAzureAppConfiguration();
+		also add in configure method
+			app.UseAzureAppConfiguration()
+			
+=> Manage Azure Manage Identity Server- : 
+	- Azure auto manage identity in infra and use that to manage authentication between resources.
+	- install nuget: Azure.Identity 
+	> in program.cs
+		config.AddAzureAppConfiguration(op=>
+		{
+		var credential = new DefaultAzureCredential(new uri("fromappsetting base url"));
+	
