@@ -1,0 +1,133 @@
+Kubernetes
+===========
+OpenStack 9open source for AWS)
+- configuration management
+	- Immutability
+- managing containers
+- orchestrators(managing all Microservices) : helps in deploying and managing app dynamically
+	- deploying
+	- 0 downtime
+	- scale
+	- self -heal containers
+		- cloud-native : appp that folow above points and are developed on kubernetes
+- scheduler : fault tolerant, high availability
+- Kubernetes IS MORE than orchestrator
+- Container runtime interface : docker
+=> Architecture
+- Cluster : control plane + worker nodes
+worker node : where app is running
+control plane : maneges the worker nodes
+KubeCtl [command line tool] connects with control plane
+2 way : declarative way : yaml 
+		imparative way : commands
+- Pod : scheduling unit, inside we run container.
+Good pratice is to run container one pod.
+
+	 _______CONTAINER NODE_______
+	|								            |
+	|	___CONTAINER RINTIME_____	|
+	|	|	_____POD_____		      |	| 
+	|	|	|			      |		      |	|
+	|	|	||CONTAINER||		      |	|
+	|	|	|___________|		      |	|
+	|	|_______________________|	|
+	|___________________________|
+
+PODS (as per documnetation) :
+	- smallest deployable units
+	- group of one more containers having shared storezge, network resources, specification to run containers.
+	- its content run in a shared context.
+	- its a set of container with shared namespace and shared filesystem volumes.
+	=> Workload : 
+		- Pods run on single container
+		- Pods tun on multiple container 
+			- sidecar pattern can be applied as here 
+			EX: on container serve data in shared volumes and other sidecar container refreshes those files
+	- Each Pod is meant to run on single instance of applciation
+	- For horizontal scaling we can increase pods for each instance.
+	
+run app in k8s : 
+	1. create microservice
+	2. containerise it
+	3. put container in pods
+	4. deploy pods to controllers (deployment)
+Sample imagination can be Pods as int and controllers can be arrays.
+Controllers : 
+		- Type : Deployment : built in controller.
+				MEans : run 5 pods all the time if one pod goes down auto restart it.
+=> Control Plane : collection of various components thaat help us in managing overall health of cluster.
+	- scale, new, destry etc to Pods is done here.
+	
+								etcd (db)   scheduler
+									^			        |
+									|			        |
+	kubelet -----> |API SERVER|	<
+									^
+									|
+								Contoller Manager
+								
+								
+API SERVER : all communication
+	- kubeltl talks here
+	- Exposes REST api
+	- we send some yaml files(kubernetes manifest files - macle is a tool that will help) over https
+	- https : 443
+
+etcd : database
+	- info about cluster
+	- if api server wants to know anything it connects
+
+Controller Manager : Desired state is taken by contollers
+	- controllers are managed by control manager.
+	- it listens to api manager
+	- Desired state : like someone is requesting for 5 pods then i'll create that.
+	- Current State : create control loops. It tells which pod is running and in what state like start stop etc.
+Scheduler : shedules stuff.
+	- they schedule the worker nodes request that come from api.
+	- if no node found that is free to do it returns pending.
+
+Controllers : control loops that watch state of cluster.
+			each controller tries to move current cluster state to desired cluster state.
+			Type: 
+			Node Contoller : onboeard new nodes.
+					- if any node signal is not recieved that is marked as unreachable, wait for 5 min to come back 
+					- else remove all attached pods to it and attach them to healthy nodes
+			Replica Controller : monitoring status of replica sets and make sure PODS to that set is are always available.
+				- If pod dies, it create new. 
+				- it can create and destroy pods
+			Job Contoller : wathces Job objects
+				- tells api server to create remove pods.
+				- itself doesnt remove or add pods
+			Deployment Controller : deployement are set of multiple, identical pods with no unique ids.
+			- run many replicas of app and auto replaces any instance 
+			- makes sure that atleast one server is always running to answer requests
+			- They have POD templates that states how each pod should look like.
+			Deployment Controller manages functions like : 
+				- manages set of pods in form of replica sets & has based labels.
+				- roll out new version of app though replica sets.
+				- roll back old app through old replica sets
+				- pause/resume rollout/rollback functions.
+				- scale up/down functions.
+
+	
+ReplicaSet : process that runs many pods together and keep specified number of pods contant.
+	- aim to run specific number of pods in a cluster all the time.
+	- create an instance of POD, scale up, scale down.
+	- helps in load balanceing.
+	- make sure that PODS replica are always running 
+
+Worker Node : 
+api contoller is of Control Plane above architecture
+						________________________________
+				    |<--------Kube-proxy		 			|
+				    |		|	|						 	          |
+ API Contoller <--------kubelet			      |
+						|           	\						 	  |
+						|	___CONTAINER RUNTIME_     	|
+						|	|	_____POD_____		|	|       |
+						|	|	|			      |		|	|       |
+						|	|	||CONTAINER||		|	|       |
+						|	|	|___________|		|	|       |
+						|	|_________________|	|       |
+						|_____________________________|
+=> kubelet : listens to api server. 
