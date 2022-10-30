@@ -1,0 +1,85 @@
+Clean Code / Onion
+-------------------
+// Not From / Read : https://jeffreypalermo.com/2008/07/the-onion-architecture-part-1/
+- Apps follow Dependency Inversion Principle and DDD
+- puts BL and Application model at the center 
+	- above dont depend on data access 
+	- infra and implementation detail depend on app core.
+	- achieved by defining abstractionand, interfaces in app core implemented in infra layer.
+	
+-------------------------------------------------
+|		User Interface							|
+|		<Controller, View Model>				|
+|			|									|
+|	-----------------------------------------	|
+|	| 	Domain Services <Application Core> 	|   |
+|	|		|								|   |
+|	|	 -------------------				|   |
+|	|	| Interface Entities |				|   |
+|	|	 --------------------				|   |
+|	|		|								|   |
+|	|	App Core							|   |
+|	-----------------------------------------   |
+|												|
+|	Infrastructure								|
+|	<Repo, Impl Services>						|
+-------------------------------------------------
+
+
+	User Interface
+	|			|
+Infrastructure	|	Tests
+	|			|	|
+	Application Core
+	
+- UI layer works with interfaces defined in applciation core at compile time
+	- it should not know anout impl types in infra ayer
+
+ASP.Net Core Architecture
+--------------------------
+Web App (Controllers/ViewModels/Views) 
+		---<interacts>--->Infrastructure Project (InMemory , Cache, Redis, Azure Service Bus, SMS Service/ Email service/ other web api clients)
+			-----<Directly interacts>----> SQL/Mongo/DB or Third party serivces
+
+Applciation Core (interfaces/POCO/Value objects/ Aggregates/Domain Events) ..
+	..---<compile time directly interacts> ---> Core WebApp 
+	..----<indeirect intract with>----> Infrastructure Project
+	
+- Since app core dont depend on infra , weasy to write automated unit tests.
+
+
+Applciation Core
+--------------------
+	- business models
+	- interfaces performed infrastructure like data access, file system, netork calls etc.
+	- Application Core types
+			- Entities (business model classes that are persisted)
+			- Aggregates (groups of entities)
+			- Interfaces
+			- Domain Services
+			- Specifications
+			- Custom Exceptions and Guard Clauses
+			- Domain Events and Handlers
+
+Infrastructure
+----------------
+	- data access implementation.
+	- Repository design pattern
+	- Infrastructure types
+		- EF Core types (DbContext, Migration)
+		- Data access implementation types (Repositories)
+		- Infrastructure-specific services (for example, FileLogger or SmtpNotifier)
+		
+		
+UI Layer
+--------
+	- end point of application
+	- no direct calls to infra layer should be allowed
+	- reference to app core project
+	- UI Layer types
+			- Controllers
+			- Custom Filters
+			- Custom Middleware
+			- Views
+			- ViewModels
+			- Startup
