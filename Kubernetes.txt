@@ -23,15 +23,14 @@ KubeCtl [command line tool] connects with control plane
 - Pod : scheduling unit, inside we run container.
 Good pratice is to run container one pod.
 
-	 _______CONTAINER NODE_______
-	|								            |
-	|	___CONTAINER RINTIME_____	|
-	|	|	_____POD_____		      |	| 
-	|	|	|			      |		      |	|
-	|	|	||CONTAINER||		      |	|
-	|	|	|___________|		      |	|
+	 _______CONTAINER NODE__________________|
+	|	___CONTAINER RINTIME____	|	
+	|	|	_____POD_____	|	| 
+	|	|	|	    |	|	|
+	|	|	||CONTAINER||  	|	|
+	|	|	|___________|	|	|
 	|	|_______________________|	|
-	|___________________________|
+	|_______________________________________|
 
 PODS (as per documnetation) :
 	- smallest deployable units
@@ -58,13 +57,13 @@ Controllers :
 => Control Plane : collection of various components thaat help us in managing overall health of cluster.
 	- scale, new, destry etc to Pods is done here.
 	
-								etcd (db)   scheduler
-									^			        |
-									|			        |
+			etcd (db)   scheduler
+			^		|
+			|		|
 	kubelet -----> |API SERVER|	<
-									^
-									|
-								Contoller Manager
+			^
+			|
+		Contoller Manager
 								
 								
 API SERVER : all communication
@@ -119,15 +118,15 @@ ReplicaSet : process that runs many pods together and keep specified number of p
 Worker Node : 
 api contoller is of Control Plane above architecture
 						________________________________
-				    |<--------Kube-proxy		 			|
-				    |		|	|						 	          |
- API Contoller <--------kubelet			      |
-						|           	\						 	  |
-						|	___CONTAINER RUNTIME_     	|
-						|	|	_____POD_____		|	|       |
-						|	|	|			      |		|	|       |
-						|	|	||CONTAINER||		|	|       |
-						|	|	|___________|		|	|       |
-						|	|_________________|	|       |
-						|_____________________________|
+				    |<-----------------	Kube-proxy			|
+				    |		|	|				|
+ 				API Contoller <--------kubelet				|
+						|           	\			|
+						|	___CONTAINER RUNTIME_   	|
+						|	|	_____POD_____	|	|       |
+						|	|	|	    |	|	|       |
+						|	|	||CONTAINER||	|	|       |
+						|	|	|___________|	|	|       |
+						|	|_______________________|       |
+						|_______________________________________|
 => kubelet : listens to api server. 
