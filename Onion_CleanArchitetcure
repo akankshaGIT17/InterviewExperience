@@ -7,29 +7,29 @@ Clean Code / Onion
 	- infra and implementation detail depend on app core.
 	- achieved by defining abstractionand, interfaces in app core implemented in infra layer.
 	
--------------------------------------------------
-|		User Interface							|
-|		<Controller, View Model>				|
-|			|									|
+---------------------------------------------------------
+|		User Interface				|
+|		<Controller, View Model>		|
+|			|				|
 |	-----------------------------------------	|
-|	| 	Domain Services <Application Core> 	|   |
-|	|		|								|   |
-|	|	 -------------------				|   |
-|	|	| Interface Entities |				|   |
-|	|	 --------------------				|   |
-|	|		|								|   |
-|	|	App Core							|   |
-|	-----------------------------------------   |
-|												|
-|	Infrastructure								|
-|	<Repo, Impl Services>						|
--------------------------------------------------
+|	| Domain Services <Application Core>	|   	|
+|	|		|			|   	|
+|	|	 -------------------		|   	|
+|	|	| Interface Entities |		|   	|
+|	|	 --------------------		|   	|
+|	|		|			|   	|
+|	|	App Core			|   	|
+|	-----------------------------------------   	|
+|							|
+|	Infrastructure					|
+|	<Repo, Impl Services>				|
+---------------------------------------------------------
 
 
 	User Interface
-	|			|
+	|	|
 Infrastructure	|	Tests
-	|			|	|
+	|	|	|
 	Application Core
 	
 - UI layer works with interfaces defined in applciation core at compile time
