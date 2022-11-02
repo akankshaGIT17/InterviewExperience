@@ -1,0 +1,112 @@
+=> Creational Design Pattern
+	- object creation mechanism and reuse of existing code
+		○ Factory
+		○ Abstract Factory
+		○ Builder
+		○ Prototype
+		○ Singleton
+=> Structural Pattern
+	- How to assemble objects and classes into larger structures
+		○ Adapter
+		○ Bridge
+		○ Composite
+		○ Decorator
+		○ Façade
+		○ Flyweight
+		○ Proxy
+=> Behavioral Pattern
+	- Algo and responsibilities between objects
+		○ Chain of responsibility
+		○ Command
+		○ Iterator
+		○ Mediator
+		○ Memento
+		○ Observer
+		○ State
+		○ Strategy
+		○ Template method
+		○ Visitor
+	
+FACTORY METHOD
+	- Provide interface for creating objects in super class
+	- Allows subclasses to alter the type of objects that well be created.
+	- Separates product construction code from code that actually uses products.
+	- Problem : Original code was on build around Truck class as only mode of transportation, later Ship was added but was difficult to add in code as it was tightly coupled with truck.
+	- Solution : Factory methods
+		○ Says replace direct object construction calls with calls to special factory method.
+		○ Objects returned by factory methods are called products.
+		○ Subclasses return diff products only if they have common base class or interface.
+		○ Truck and ship class impement Tranport interface. Thus roadLogistic class return truck obj and shipLogistic class return ship obj
+		○ Structure : 
+			§ Product : declare interface common to all objects and its subclasses
+			§ ConcreProducts impl of product interface
+			§ Creator : declare factory method which returns new product obj. Return type of this method matches interface.
+			§ Concrete creators : override base factory method to reeturn diff type of products.
+		○ Factory method doesn’t always return new instances it can also return existing objects or cache or object pool or another source.
+			
+	- When to use :
+	-------------------
+		- When don’t know exact dependencies and types of object code should work with.
+		- When want users of your framework with a way to extent internal components
+			§ Inheritence is the way but how to know that subclass should be used ot standard component.
+				□ Thus reduce the code that constructs components into a sinle factory method & let it be overriden than extending component
+		- When to save resources you reuse existing object instead of rebuilding them each time
+	- Advantages : No tight coupling to creator and concrete products
+		- Single responsibility principle impemented
+		- Open/Closed principle : can into new types without breaking existing code.
+	- Disadvantages : Code becomes complicated as new subclasses are intoduced
+
+	- Many designs evolve from factory to  abstract factory or builder.
+	- CODE:
+	Ø Abstract Class Creator { // 
+		Public abstract Iproduct FactoryMethod();
+		Public string SomeOperation(){
+			Var product = factoryMehtod();
+			Var result = product.Operation();
+			Return result;
+			}
+		}
+	Ø Class concreteCreator1 : Creator{
+		Override Iproduct FactoryMethod(){
+		Return new ConcreateProduct1()}
+		}
+		
+	Ø Class concreteCreator2 : Creator{
+		Override Iproduct FactoryMethod(){
+		Return new ConcreateProduct2()}
+		}
+	
+	Ø Public interface Iproduct
+		{
+		String Operation();
+		}
+	Ø Class ConcreteProduct1 : Iproduct{
+		Public strinf Operation(){
+		Return "Concrete product 1" ;}
+		}
+	Ø Class ConcreteProduct2 : Iproduct{
+		Public strinf Operation(){
+		Return "Concrete product 2" ;}
+		}
+	
+	Ø Class Client {
+		Main(){
+			ClientCode(new ConcretaeCreator1());
+			ClientCode(new ConcretaeCreator2());
+			}
+		Void ClientCode(Creator creator){
+		Creator.SomeOperation();
+		}
+		}
+Class Program {
+Void main(string[] args){
+New Client().Main();
+}
+}
+
+
+ABSTRACT FACTORY
+	- Lets you produce families of related objects without specifying their concreate classes.
+	- Declare interface of each distinct product of the family
+	- Declare abstract factory
+			
