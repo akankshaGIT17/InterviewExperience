@@ -104,4 +104,31 @@ Dependency Inversion
 			Also mocking will be easy
 		
 	
+Open Close
+----------
+- Def : Classe, modules, functions etc shuold be open for etension but close for modification.
+- uses interface instead of superclass 
+- interface is closed for modification , can provude new implementations.
+- Ex > NotificationClass (NotifyObj not){
+		if(not.SMS)
+			smsCallingServe();
+		if(not.Email)
+			emailCallingService();
 			
+	- issue: if one more type is introduced in NotifyObj we need to extend the NotificationClass with one more if and that breaks this principle.
+	- solution : interface INotifiationProvider {
+		void send(NotifyObj not); }
+	- Class smsCallingServe() : INotifiationProvider;
+	  Class emailCallingService() : INotifiationProvider;
+	  Class webHookCallingService() : INotifiationProvider;
+	 - Map<NotifyObj, INotifiationProvider> providers;
+		Class NotificationProviderFactory {
+		INotificationProvider get(NotifyObj not){
+			returns providers.get(NotifyObj);}
+			
+	- NotificationClass becomes : 
+		private NotificationProviderFactory fac;
+		void sendNotify(NotifyObj not)
+		{ fac.get(fac.send(fac)}
+		
+- Why do we want avoid modification - regression is redued.
