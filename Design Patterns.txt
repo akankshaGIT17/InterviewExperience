@@ -103,8 +103,53 @@ Void main(string[] args){
 New Client().Main();
 }
 }
+=========================================================================================================================================================
+STRATEGY PATTERN
+---------------
+- Behavioral Design pattern
+- take class that do specidic work in different ways into separate class called strategy.
+- Context class delegates work to linked stratgy object. It doesnt execute these object itself.
+- context with all strattegies through same generic interface, exposing single method trigger.
+- Problem:  App originally supported only driving route, we further want to add walking, bicycle, public routes as well. This becomes tedious to maintain. This also increased merge conflicts.
+- startergies : division of class that tat does something specific in different ways.
+- Context : stores reference to strategies. It delegates the work to strategies. 
+- context is independent. Works with same genreic interface exposing single method for algo in the strategy.
+> PsuedoCode 
+	- interface IStrategy -> method execute(a,b)
+	- class ConcreteVehicle: IStrategy -> execute(a,b) { return a+b }
+	- class ConcreteWalking: IStrategy -> execute(a,b) { return a-b}
+	- class Context {
+		IStrategy st;
+		setStrategy(IStrategy _st){
+		_st = st;}
+		execute(int a, int b) ->return st.execute(a,b)}
+	- main(){
+		Context conextObj =new Context()
+		conextObj.setStrategy(new ConcreteVehicle())
+		else
+		conextObj.setStrategy(new ConcreteWalking()) }
+		
+- When to use: 
+	- want diff varients of same algo
+	- simiar classes only differ in h\ther execution behavour
+	- isolcate cde, data and dependencies of algos
+	- class have massive conditional statement that switches between various variants of same algo.
 
+Key pointer: 
+* Uses Open/Close principle - introduce new startergies without changing context.
 
+* Replaces inheritance with composition.
+
+	
+Not :
+	- few algo that rearely change
+	- client should be awareaout the strategies.
+	
+Others :
+	- similar to bridge,state (some Adapter) - all based on composition.
+	- command pattern differs : it converts operation into obj. 
+===============================================================================================================================================================	
+	
 ABSTRACT FACTORY
 	- Lets you produce families of related objects without specifying their concreate classes.
 	- Declare interface of each distinct product of the family
