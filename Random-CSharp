@@ -1,0 +1,8 @@
+Q. Diff btw Readonly and only Get; 
+-------------------------------------------
+
+A. There is a difference between readonly and {get; }:
+
+In int x { get; } (which won't compile as there's no way to set x - I think you needed public int x { get; private set; } ) your code can keep changing x
+
+In readonly int x;, x is initialised either in a constructor or inline and then can never change.
