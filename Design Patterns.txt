@@ -26,8 +26,9 @@
 		○ Strategy
 		○ Template method
 		○ Visitor
-	
+===========================================================================================================================================================
 FACTORY METHOD
+---------------
 	- Provide interface for creating objects in super class
 	- Allows subclasses to alter the type of objects that well be created.
 	- Separates product construction code from code that actually uses products.
@@ -154,4 +155,73 @@ ABSTRACT FACTORY
 	- Lets you produce families of related objects without specifying their concreate classes.
 	- Declare interface of each distinct product of the family
 	- Declare abstract factory
+
+==============================================================================================================================================================
+BUILDER PATTERN
+-----------------
+	• Diff type and representation of same obj using same code.
+	• EX: House class -> extends to bigger house with heating plumbing etc.
+		○ Create base class and rest from base.
+		○ OR create a giant constructor in base, where many parameter will be empty for each selection.
+	• Approach - 
+		○ Extract obj construction code and move to builder class
+		○ No need to call all the builder classes.
+		○ For above ex: 
+			§ (HouseBuilder)Builder : +buildWalls()
+					+buildDoors()
+					+buildRoof()
+		○ To create a obj, we follow series of steps. The implementation of these classes can be different.
+		○ Need common interface that interacts with all the builders (not always required) : Director
+		○ Director : defines order to execute the building steps
+			§ Director : +Director(builder)
+					+changeBuilder(builder)
+					+make(type)
+	• Structure:
+		○ Client -> Director -> Builder -> {ConcreteBuilder1->Product1, ConcreteBuilder2->Product2}
+		○ Builder is the interface declare product construction steps that are common to all builders.
+		○ Director - order for call construction
+	• Advantages : 
+		○ Helps in removing many parameters/overeloaded constructor
+		○ Used when need diff representation of same obj
+	• Single Responsibility is achieved
+
+	Ø Code : 
+		- Interface IBuilder { BuildPartA(); BuildPartC(); BuildPartD(); }
+		- Class ConcreteBuilder : Ibuilder
+			{
+			Product_product = new Product()
+			-  ConcreteBuilder () { this.Reset();}
+			- Void Reset() { this._product = new Product();}
+			- Void BuildPartA() { this._product.Add("PartA1");}
+			- Void BuildPartB() { this._product.Add("PartB1");}
+			- Void BuildPartC() { this._product.Add("PartC1");}
+			- Product GetProduct() { var result = this._product; return result;}
+			}
+		- Class Product {
+			- List<obj> _parts = new …();
+			- Void Add() { this._parts.Add(part); }
+			- String ListParts() { … return str;}
+			}
+		- Class Director {
+			- Ibuilder _builder;
+			- Ibuilder builder { set__builder =value;}
+			- Void BuildAProduct() { this._builder.BuildPartA();}
+			- Void BuildHugeProduct() { this._builder.BuildPartA();
+							This._builder.BuilderPartB();
+							This._builder.BuildPartC();}
+							
+		- Class Program{
+			- Main() {
+				□ Dir = new Director()
+				□ _builder = new ConcreteBuilder()
+				□ Dir.Builder = _builder;
+				□ Dir.BuildAProduct(); // Can be conditional or anything
+					® _builder.GetProduct().ListParts()
+				□ Dir.BuildHugeProduct()
+					® _builder.GetProduct().ListParts()
+				□ //Custom Product
+					® _builder.BuildPartA()
+		
+		
+
 			
