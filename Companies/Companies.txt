@@ -19,6 +19,11 @@ LNT Infotech
 - Ways in which you can stop inheritance of a class
 - ref vs out 
 - dispose vs finalize
+- Authentication and Authorization filter. What are they and how are they implemented.
+- What to provide JSON as response, how to do in web API.
+- Need to provide user information to UI, how to design for microservices.
+- What is boxing and unboxing
+- how many types od filters
 - if there 3 ty try catch and finally are there, which finally will be called?
 - defered vs eager loading in linq
 - explain group by in linq
@@ -36,3 +41,20 @@ LNT Infotech
 - Service Bus and Queues in Azure
 - Blob storage and how it is integrated in the project.
 - Functions in Azure
+
+
+Others(name dont remember)
+----------------------------
+- MVC ifcycle
+- Page lifecycle in asp.net
+- Post vs patch and patch vs put
+- Sql- trigger on update how it is called.
+- what is indexing 
+- .net vs .net core
+- string vs string pool
+- soap/rest
+- sealed classes?
+- partial classes?
+- partial views
+- JS - value vs test
+- sql - what is trigger
