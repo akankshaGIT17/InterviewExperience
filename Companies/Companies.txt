@@ -1,0 +1,38 @@
+Mindtree
+-----------
+- Authorization - role based- how implementing in current project
+- SAGA - what problem it solves?
+- what is the meaning of TDD?
+- explain open close principle
+- Employee class have permanent employee and temp emp. later contract emp added how will you work without explointing open close principle.
+- what are api gateways? what all is implemented and what role does it plays?
+- diff between JWT and session. Whats the advantage of JWT?
+- what is sinlge sign on
+- where is Kafka hosted? How are you consuming it?
+- Function App, Service Bus and API Gateway(rate limiting etc) in Azure.
+
+
+LNT Infotech
+----------------
+- use of this keyword.
+- what is serializing and what is the max length to serialize in json.serialize. Types of serializers
+- Ways in which you can stop inheritance of a class
+- ref vs out 
+- dispose vs finalize
+- if there 3 ty try catch and finally are there, which finally will be called?
+- defered vs eager loading in linq
+- explain group by in linq
+- 5 middleware, i sont want to call last 2 how can i do that?
+- default routing in webapi/core
+- features of .Net core that are used in your project 
+- how to call SP in EF
+- how to update code when DB is updated in EF
+- Lazy loading in EF
+- Lazy loading Angular
+- How to implement Session in .Net core
+- Role of startup class
+- What is dependency injection
+- Why are Logic Apps used.
+- Service Bus and Queues in Azure
+- Blob storage and how it is integrated in the project.
+- Functions in Azure
