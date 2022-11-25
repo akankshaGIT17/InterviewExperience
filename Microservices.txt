@@ -5,3 +5,31 @@
 - Disadvantages of Microservices?
 - If we decide to move the Microservices application to cloud what will be the implication?
 - What is API gateway?
+-------------------------------------------------------------------------------------------------------------------------------------
+SAGA
+=====
+- manage data consistency across MS in distributed transaction cases.
+- create as set of transaction that update MS sequenctially.
+- then publish events to to trigger next transaction for next ms.
+
+- if one step fails then SAGA trigger the rollback transaction for previous ms as well.
+Principle used
+---------------
+	- pub /sub with brokers
+	- API composition patterns.
+ - Each MS has own db and manage local transaction in atomic way with strict consistency.
+ - SAGA group these local transaction and sequenctially inoke each one by one.
+ - each local transaction updates db and ublish an event to trigger next local transaction.
+ Implementation types
+----------------------
+	- Choreography 
+		- pub/sub principle.
+		- each ms publish to message broker system and trigger local transaction in other ms.
+		- Dis : decouple direct dependency of ms when managing transaction.
+	- Orchestration
+		- centralised control of ms through api calls.
+		- sequenctial invoking of transaction.
+		- Dis: single point failure.
+		
+
+	
