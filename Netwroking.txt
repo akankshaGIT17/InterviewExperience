@@ -1,0 +1,25 @@
+𝗪𝗵𝗮𝘁 𝗶𝘀 𝗖𝗗𝗡?
+
+Have you ever wondered how Netflix is so fast when streaming a movie to your house? There is one component that has much importance here and it is called 𝗖𝗗𝗡 (𝗖𝗼𝗻𝘁𝗲𝗻𝘁 𝗗𝗲𝗹𝗶𝘃𝗲𝗿𝘆 𝗡𝗲𝘁𝘄𝗼𝗿𝗸). It is a network of servers that move data fast through the network by using cache servers, as well as edge servers in 𝗣𝗼𝗶𝗻𝘁𝘀 𝗼𝗳 𝗣𝗿𝗲𝘀𝗲𝗻𝗰𝗲 (𝗣𝗢𝗣) 𝗹𝗼𝗰𝗮𝘁𝗶𝗼𝗻𝘀, that are geographically close to the user. Static content of the site (such as videos, images, etc.) is moved to every server on the network. This allows that user connects to the geographically closest server and fetch requested contents from there.
+
+How it works basically, is when a user requests a file using some URL, the DNS routes the request to the best-performing POP location, which is closest to the user. If no servers close to the user have a file in the cache, it is fetched from the origin server. Then, the origin server moves that file to the closest server location (POP). This edge server now caches the file until time-to-live (TTL) specified in HTTP header experiences (default is 7 days). 
+
+CDN allows us a few advantages:
+
+𝟭. 𝗥𝗲𝗱𝘂𝗰𝗶𝗻𝗴 𝗽𝗮𝗴𝗲 𝗹𝗼𝗮𝗱 𝘁𝗶𝗺𝗲
+
+We always want to improve our website page loading speeds and here CDN reduces latencies, which makes higher satisfaction rates for users.
+
+𝟮. 𝗥𝗲𝗱𝘂𝗰𝗲𝗱 𝗯𝗮𝗻𝗱𝘄𝗶𝗱𝘁𝗵 𝗰𝗼𝘀𝘁𝘀
+
+A major cost for websites is the consumption of bandwidth for hosting. The amount of data that an origin server must provide can be decreased by CDNs through caching and other optimizations, which lowers hosting costs for website owners.
+
+𝟯. 𝗜𝗻𝗰𝗿𝗲𝗮𝘀𝗶𝗻𝗴 𝗰𝗼𝗻𝘁𝗲𝗻𝘁 𝗮𝘃𝗮𝗶𝗹𝗮𝗯𝗶𝗹𝗶𝘁𝘆
+
+Large volumes of traffic or hardware issues can prevent a website from operating normally. A CDN can manage more traffic and resist hardware failure better than multiple-origin servers because of its distributed architecture.
+
+𝟰. 𝗜𝗺𝗽𝗿𝗼𝘃𝗶𝗻𝗴 𝘄𝗲𝗯𝘀𝗶𝘁𝗲 𝘀𝗲𝗰𝘂𝗿𝗶𝘁𝘆 
+
+DDoS attacks attempt to shut down applications by flooding the website with a large volume of fictitious traffic. By spreading the load across several intermediary servers, CDNs can manage such traffic spikes while lessening the impact on the origin server.
+
+There are different CDN providers to choose from, such as 𝗦𝘁𝗮𝗰𝗸𝗣𝗮𝘁𝗵, 𝗦𝘂𝗰𝘂𝗿𝗶, and 𝗖𝗹𝗼𝘂𝗱𝗳𝗹𝗮𝗿𝗲 (a free one), as well as CDN-s on public cloud providers, 𝗔𝗺𝗮𝘇𝗼𝗻 𝗖𝗹𝗼𝘂𝗱𝗙𝗿𝗼𝗻𝘁 and 𝗔𝘇𝘂𝗿𝗲 𝗖𝗗𝗡.
