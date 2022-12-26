@@ -303,3 +303,25 @@ builder.Services.AddAuthorization(options =>
 	- Further division of operators that use it:
 		- Streaming : donot read all the data source before they yield the elements.
 		-Non-streaming : must read all data source before they yield result element.
+		
+================================================================================================		
+𝐈𝐄𝐧𝐮𝐦𝐞𝐫𝐚𝐛𝐥𝐞 𝐚𝐧𝐝 𝐈𝐐𝐮𝐞𝐫𝐲𝐚𝐛𝐥𝐞 𝐢𝐧 .𝐍𝐄𝐓
+
+IEnumerable and IQueryable interfaces are both used to work with collections of data and both support LINQ (Language Integrated Query).
+
+𝐈𝐐𝐮𝐞𝐫𝐲𝐚𝐛𝐥𝐞
+
+✅ IQueryable executes queries on the server side.
+
+✅ It is designed specifically to work with LINQ
+
+✅ It extends IEnumerable, which means it includes all of the functionality of IEnumerable.
+
+✅ It can be more efficient when working with large data
+
+✅ It can be more helpful when you have to apply a lot of filtrations, you can apply all filters on Queryable and when you are done you can convert data to desired collection
+
+𝐈𝐄𝐧𝐮𝐦𝐞𝐫𝐚𝐛𝐥𝐞
+✔️ IEnumerable executes queries on the client side.
+
+✔️ It is generally used to work with in-memory data collections.
