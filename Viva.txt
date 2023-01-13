@@ -377,3 +377,23 @@ A data frame represents a table or a structure similar to an array with two
 dimensions It can be interpreted as matrices where each column of that matrix
 can be of different data types.
 
+
+=======================MCS 222==============================
+---------OOD-------------------
+- what is UML
+- what is state chart diagram? (Use Case Diagram) -- At any given time, an object is in a particular state. This transition from one state to the next
+state is represented by a state diagram.
+- Deployment diagram
+- what is a sequence diagram
+- activity vs squence
+- some tools to design UML ? -ArgoUML, StarUML, BOUML
+		-objrct model, 
+------------web-----------------------
+- what is spring boot- Spring Boot is an open source Java-based framework used to create a micro Service.
+- whats JVM?
+- JIT in java
+- what are servelet? - Servlets are the Java programs that run on the Java-enabled web server or application server. They are used to handle the request obtained from the webserver, process the request, produce the response, then send a response back to the webserver. 
+
+- what is maven?- Maven is a project management and comprehension tool that provides developers a complete build lifecycle framework.
+- JPA - Java Persistence API JPA is just a specification that facilitates object-relational mapping to manage relational data in Java applications
+
