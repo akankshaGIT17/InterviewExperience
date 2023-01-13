@@ -397,3 +397,71 @@ state is represented by a state diagram.
 - what is maven?- Maven is a project management and comprehension tool that provides developers a complete build lifecycle framework.
 - JPA - Java Persistence API JPA is just a specification that facilitates object-relational mapping to manage relational data in Java applications
 
+
+
+=============================MCSL54=============================	
+
+------------------------------ Graphics---------------------------------------------
+
+- OpenGL - graphics Application Programming Interface (API). OpenGL is a library of functions for fast 3D rendering
+- GLUT - An OpenGL Utility Toolkit (GLUT) is a complete API that lets you create windows and handle messages
+		- set window size  : glutInitWindowSize(640,480); 
+- Data types of OpenGL - 	GLint, GLsizei (int) Glfloat, GLclampf (float), Glshort (short)
+	function - set background colour : glClearColour(1.0, 1.0, 1.0)
+
+- Header files : #include <gl\gl.h>, #include<gl\glu.h>, #include <gl\glut.h>
+
+- Display point - glPointSize() 
+  Display line -  glLineWidth()
+  Stippled Lines (dotted line) -  glLineStipple(Glint factor, Glushort pattern)
+  Which function ised to create perpective projection : Void glFrustum(GLdouble left, GLdouble right, GLdouble bottom, GLdouble top,Gldouble near, Gldouble far); 
+  Orthographic Projection - void glOrtho(GLdouble left, GLdouble right, GLdouble bottom, GLdouble top,GLdouble near, GLdouble far)
+
+- Ray tracing algo : a ray of light is traced in a backwards direction. That is, we start from the eye or camera and traces the ray through a pixel in the mage plane into the scene and determines what it hits. The pixel is then set to the colour values returned by the ray.
+
+
+- VRML -  Virtual Reality Modeling Language : file format that defines the layout and content of a 3Dworld with links to more information. 
+- VRML extention : .wrl
+- Structure of VRML file
+• VRML files contain:
+• The file header
+• Comments - notes to yourself
+• Nodes - nuggets of scene information
+• Fields - node attributes you can change
+• Values - attribute values
+
+
+
+-------- Web development --------------
+- Server Pages :  to support dynamic content without the performance problems or the difficulty of using a server API.
+	ex : aSP, JSP
+
+- what are servelet? - Servlets are the Java programs that run on the Java-enabled web server or application server. They are used to handle the request obtained from the webserver, process the request, produce the response, then send a response back to the webserver. 
+- JSP :  server-side programming technology that enables the creation of dynamic, platform-independent method for building Web-based app
+
+- commont includes while creating servelet file
+	import java.io.*;
+import javax.servlet.*;
+import javax.servlet.http.*; 
+
+- what is tomcat
+- XML Parsers :  parsers to break up your document into its component pieces and make
+them accessible to other parts of a program
+- XML parser exaple : SAX, Microsoft XML Parser, expat—This , XP 
+- element inXML : An entity started by a start tag and ended by an end tag
+- Java Beans : A JavaBean is a general-purpose component model. are classes that encapsulate one or more objects into a single standardized object (the bean)
+
+
+- web security concepts : 
+	Integrity - Data Integrity, System Integrity
+	Availability
+		Authentication
+		Authorisation
+		Assurance
+
+
+- Mechanism o http authentication	
+	- HTTP Basic Authentication 
+	- HTTP Digest Authentication
+	- Form Based Authentication 
+	- HTTPS Client Authentication
