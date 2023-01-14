@@ -401,14 +401,18 @@ state is represented by a state diagram.
 
 =============================MCSL54=============================	
 
------------------------------- Graphics---------------------------------------------
+----------------------------Graphics-------------------------------
 
 - OpenGL - graphics Application Programming Interface (API). OpenGL is a library of functions for fast 3D rendering
 - GLUT - An OpenGL Utility Toolkit (GLUT) is a complete API that lets you create windows and handle messages
 		- set window size  : glutInitWindowSize(640,480); 
 - Data types of OpenGL - 	GLint, GLsizei (int) Glfloat, GLclampf (float), Glshort (short)
 	function - set background colour : glClearColour(1.0, 1.0, 1.0)
+- bit map : graphic is created from rows of different colored pixels that together form an image.
+- 
 
+- ex of software image processing: Graphics Image Processing, Remote Sensing Packages
+- CAD (Computer Aided Design) systems allow an engineer to view a design from any angle with the push of a button and to zoom in or out for close-ups and long-distance views.
 - Header files : #include <gl\gl.h>, #include<gl\glu.h>, #include <gl\glut.h>
 
 - Display point - glPointSize() 
@@ -423,30 +427,45 @@ state is represented by a state diagram.
 - VRML -  Virtual Reality Modeling Language : file format that defines the layout and content of a 3Dworld with links to more information. 
 - VRML extention : .wrl
 - Structure of VRML file
-• VRML files contain:
-• The file header
-• Comments - notes to yourself
-• Nodes - nuggets of scene information
-• Fields - node attributes you can change
-• Values - attribute values
+	• VRML files contain:
+	• The file header
+	• Comments - notes to yourself
+	• Nodes - nuggets of scene information
+	• Fields - node attributes you can change
+	• Values - attribute values
 
+- Input and Output Devices of computer graphics : 
 
+	• Touch Panel
+	• Light Pens
+	• Graphics Tablet
+	• Plotters
+	• Film Recorders. 
+- Point clipping is the technique related to proper display of points in the scene, although, this type of clipping is used less frequently in comparison to other types, i.e., line and polygon clipping.
 
+- Line clipping algo :• Cohen Sutherland algorithm - dividing the
+area surrounding the window region into four segments Up, Down, Left, Right
+(U,D,L,R) and assignment of number 1 and 0 to respective segments helps in
+positioning the region surrounding the window. 
+	• Cyrus-Beck of algorithm :  we need to find the value of the parameter t in the parametric representation of the line segment for the point at which the segment intersects the clipping edge.
+
+- Line generation algo :
+	• dda algo : uses floating points ,
+Digital Difference Analyzer (DDA) algorithm is used to draw lines on a screen in an incrementally. The algorithm is called the Digital Difference Analyzer because it interpolates points based on the difference between the start and end points.
+	•Bresenhams Line Generation Algorithm : efficient raster line generation algorithm. This algorithm scan converts lines using only incremental integer calculations and these calculations can also be adopted to display circles and other curves.
 -------- Web development --------------
-- Server Pages :  to support dynamic content without the performance problems or the difficulty of using a server API.
-	ex : aSP, JSP
+- Server Pages :  to support dynamic content without the performance problems or the difficulty of using a server API.ex : aSP, JSP
 
 - what are servelet? - Servlets are the Java programs that run on the Java-enabled web server or application server. They are used to handle the request obtained from the webserver, process the request, produce the response, then send a response back to the webserver. 
 - JSP :  server-side programming technology that enables the creation of dynamic, platform-independent method for building Web-based app
 
 - commont includes while creating servelet file
 	import java.io.*;
-import javax.servlet.*;
-import javax.servlet.http.*; 
+	import javax.servlet.*;
+	import javax.servlet.http.*; 
 
 - what is tomcat
-- XML Parsers :  parsers to break up your document into its component pieces and make
-them accessible to other parts of a program
+- XML Parsers :  parsers to break up your document into its component pieces and make them accessible to other parts of a program
 - XML parser exaple : SAX, Microsoft XML Parser, expat—This , XP 
 - element inXML : An entity started by a start tag and ended by an end tag
 - Java Beans : A JavaBean is a general-purpose component model. are classes that encapsulate one or more objects into a single standardized object (the bean)
@@ -460,7 +479,7 @@ them accessible to other parts of a program
 		Assurance
 
 
-- Mechanism o http authentication	
+- Mechanism of http authentication	
 	- HTTP Basic Authentication 
 	- HTTP Digest Authentication
 	- Form Based Authentication 
