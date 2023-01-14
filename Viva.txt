@@ -484,3 +484,65 @@ Digital Difference Analyzer (DDA) algorithm is used to draw lines on a screen in
 	- HTTP Digest Authentication
 	- Form Based Authentication 
 	- HTTPS Client Authentication
+
+
+==============================BCSL56====================================
+UNIX
+ 1. Few features of UNIX
+ 2. what is kernel  
+			* A kernel is the very core of a typical OS
+			* A shell is a CLI,is a program which provides the interface between the user and an operating system 
+ 3. Fulll form -
+		telnet - remote network login to other computer 
+		ftp - network file transfer program
+		cat - copy file to display device
+		diff - compare two files and show differences
+		cp - copy files
+		ls - list files in a directory and their attributes
+		pwd - show current directory
+		mkdir - new directory
+ 4. How to define a variable in shell - $ length = 50
+ 5. Types of Shell - c shell, bourn shell, Korn shell , GNU bourn again shell
+ 6. Wrtie a comment in shell script-  # Illustrates implementing a counter with a while loop
+ 7. Extention of a bourn shell file and c shell file	- bourn : sh c: csh
+ 8. chown-  Chown is a utility that is also used to change file ownership.
+ 9. ipconfig - Displays all current TCP/IP network configuration values and refreshes Dynamic
+ 10. netstat - a networking tool used for troubleshooting and configuration, that can also serve as a monitoring tool for connections over the networ
+ 11. telnet -  to virtually access a computer and to provide a two-way, collaborative and text-based communication channel between two machines
+Vi Edito : 
+	getting in - Bash command prompt, type vi or vi some-filename
+	getting out - hit ESC to enter command mode. Enter :wq to write your file
+and quit by :q
+
+C
+--
+1. what is Psuedocode? -- 
+2. C is a middle level landuage or high level landuage
+3. Extention of a C file -> .c
+4. How would you print "Hello"? -> printf
+5. What are looping statements?
+6. what are conditional statements? Ex
+7. whait is void main()?
+8. How would take input? -> scanf
+9. What are syntax error?
+10. What is a compiler vs interpreter
+11. What are header files?
+12. getch()?- conio.h
+13. While vs do while
+14. exit vs break
+15. pointers and array?
+16. continue
+17. Macros : #define 
+
+TCP/PI
+=====
+- Ports type 
+	 well known : 0 -1023
+	registered : 1024 -49151
+	dynamic : 49152 - 65535
+
+- Ports andthere role
+	20 FTP - data port
+	25 SMTP - used for sending E-mails	
+	53 DNS (Domain Name Server)
+	80 HTTP (Hyper Text Transfer Protocol) - used for transferring web pages
