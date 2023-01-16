@@ -533,4 +533,22 @@ TCP/IP
 	53 DNS (Domain Name Server)
 	80 HTTP (Hyper Text Transfer Protocol) - used for transferring web pages
 
+ ===================================BCSL58=======================================
+- what is numerical anylysis : study of algo to use numerical approximation for problems of mathematical analysis.
+- floating point representation : represetn very big and very tiny numbers
+- floating point arithmetic : using floating point representation of real numbers asapproximation to support a trade off between range and precision.
+- format to represent a number : fixed point representation, floating point representation
+- significant digits : numbers in position notation are digits in the number tha are reliable and absolutely necessary to indicate quantity of something.
+- normalization : convert fixed point data to floating point data 
+- mentessa : digit after decimal
+- base  : greater than zero
+- bisection method :root-finding method for which once knows two values with opposite signs
+- regula - falsi : numerical method  for estimating the roots of a polymial f(x). Vlaue reached mid poit int the bisection method and serves as new approximation of a root of f(x). It makes convergence faster.
+- newtons method : newton-raphson method, root finding algo  which produces successively better apporximation to the roots of a real-valued function
+- secant mehtod : rooot-finding algo that uses succession of roots of a secant lines to better approximate a root of a function 
+- gauss elimination method  : row reduction : methd to solve systems of liner equation s. 
+- pitfall of above : devision by zero 
+	row of error: more significant
+- chopping - separate a number to make it fix
+- rounding 
  
