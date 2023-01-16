@@ -552,3 +552,20 @@ TCP/IP
 - chopping - separate a number to make it fix
 - rounding 
  
+==============================MCSL209=============================================
+- what is a structure 
+- link list (singly , double)
+- stack (lifo)
+-  prefix expression to a postfix expression using pointers. which DS?
+
+- queue (fifo)
+- tree vs binary tree : tree cannot be empty least has root
+- A binary search tree (BST): is a binary tree in which all the elements of the left subtreeof a node are less than the element stored in the node and the elements stored in theright subtree of the node. 
+- An AVL tree is a balanced Binary search tree
+- A Graph is a collection of Vertices and Edges.
+- shortes path algo
+- Dijkstra’s vs kruskal
+-  binary search run time
+- linear search
+- Bubble sort
+- Splay trees, Red-Black trees and AA-trees.
