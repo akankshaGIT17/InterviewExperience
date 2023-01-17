@@ -564,8 +564,15 @@ TCP/IP
 - An AVL tree is a balanced Binary search tree
 - A Graph is a collection of Vertices and Edges.
 - shortes path algo
-- Dijkstra’s vs kruskal
--  binary search run time
-- linear search
-- Bubble sort
+
+
 - Splay trees, Red-Black trees and AA-trees.
+----------------------------------------------
+- BFS & DFS
+- Dijkstra’s vs kruskal
+- binary search run time : O(log n)
+- linear search
+- Bubble sort 
+- insertion sort
+- seaching and sorting algo
+- types of traversas : - inoder preorder postorder
