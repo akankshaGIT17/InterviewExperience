@@ -590,3 +590,38 @@ TCP/IP
 - seaching and sorting algo
 - binary search run time : O(log n)
 - types of traversas : - inoder preorder postorder
+==================================CITL01======================================
+----------------Excel-----------------
+- Mail merge :  By using Mail Merge, you can send the same letter to a number of people, without typing the original letter more than once
+- shortcut for selection in excel : 
+	Entire Column Ctrl + Spacebar
+	Entire Row Shift + Spacebar
+	Entire Worksheet Ctrl + Shift + Spacebar 
+- Excel formula : SQRT (number), PRODUCT (number 1, number 2, ...) 
+	DATEVALUE (date_text)  : 
+------------------Operating system--------
+- windows vs linux
+- some linux OS : Red Hat Linux , Fedora, ubuntu
+- linux sys req : 700 MHz x86 processor or high, 384 MB of system memory (RAM) , 8 GB of disk space , Graphics card, Sound card, A network or Internet connection
+- linux cmds : alias - substitute a small or more familiar name in place of a long string.
+	awk - . Use awk to handle complex task such as calculation, 
+	Chmod -  is a utility that changes the permission of a file
+	Chown -  is a utility that is also used to change file ownership. 
+-------DB---------
+- Access : forms?
+- primary key, foreign key
+----------Internet-------
+- Telnet (TErminal NETwork):  is a protocol that enables the user to log on a different system and use the resources. 
+- FTP (File Transfer Protocol) is a protocol to transfer file(s) from local machine to remote machine or get file(s)
+- INTERNET SECURITY :Access control software, Antivirus software, Firewall, User login and password
+--------HTML--------------
+- Meaning Hypertext and markup
+- Types of list : Ol, Ul
+- link tag : <a href=”Animation Concept”>
+- image tag : <img src=”animated.gif” alt=”text message” width = w height =h hspace= hs vspace =vs> 
+<textarea name="txtarea" rows="5" columns="50">
+- iframes
+- Messgae box: prompt, confirm, 
+--------JAva----------------
+- Java applets
+- JVM, bytecode
