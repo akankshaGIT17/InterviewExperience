@@ -576,3 +576,17 @@ TCP/IP
 - insertion sort
 - seaching and sorting algo
 - types of traversas : - inoder preorder postorder
+
+
+===========================BCSL045==================================
+-  characteristics of good algorithm
+- what are recurrences
+- different type of notatios : big O(worst), theta(average), Omega(best)
+- Greedy approach - kruskal and prim
+- knpsack problem (greedy  soln)
+- Divide and conquer (merge sort, binary search and matrix multiplication by strassen‟s algorithm)
+- BFS & DFS
+- shortest path algo
+- seaching and sorting algo
+- binary search run time : O(log n)
+- types of traversas : - inoder preorder postorder
