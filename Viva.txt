@@ -544,7 +544,8 @@ TCP/IP
 - format to represent a number : fixed point representation, floating point representation
 - significant digits : numbers in position notation are digits in the number tha are reliable and absolutely necessary to indicate quantity of something.
 - normalization : convert fixed point data to floating point data 
-- mentessa : digit after decimal
+- mantissa : digit after decimal
+- expoent : 
 - base  : greater than zero
 - bisection method :root-finding method for which once knows two values with opposite signs
 - regula - falsi : numerical method  for estimating the roots of a polymial f(x). Vlaue reached mid poit int the bisection method and serves as new approximation of a root of f(x). It makes convergence faster.
@@ -555,6 +556,11 @@ TCP/IP
 	row of error: more significant
 - chopping - separate a number to make it fix
 - rounding 
+- interpolation - 
+	- equal intervals
+	- unequal intervals
+- differential equation
+ 
  
 ==============================MCSL209=============================================
 - what is a structure 
