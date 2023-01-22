@@ -566,7 +566,8 @@ TCP/IP
 - differential equation
  
  
-==============================MCSL209=============================================
+==============================MCSL209=====BCSL33========================================
+********** BCSL 33 has Data and file structure only, no algo (search dorting is present) **********
 - what is a structure 
 - link list (singly , double)
 - stack (lifo)
