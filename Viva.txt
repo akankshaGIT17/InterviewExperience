@@ -286,9 +286,13 @@ them accessible to other parts of a program.
 - Java Applet : program that is embedded in the webpage to generate the dynamic content. It runs inside the browser and works at client side.
 - Java applets vs java program
 - how to define main method in java.
-- what is encapsulation and polymorphism.
+- runtime vs compile time polymorphism
 - overloading / overridaaing
 - access specifiers - protected
+- Encapsulation / inheritance / polymorphism (types)
+- abstraction
+- abstract classes / interface
+- exception handling
 
 
 =====================BCSL-22=====================
