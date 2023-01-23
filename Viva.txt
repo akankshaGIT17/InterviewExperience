@@ -640,3 +640,22 @@ TCP/IP
 --------JAva----------------
 - Java applets
 - JVM, bytecode
+
+
+=============================BCSL44============================================
+- What is histogram  - bar grapg like representtation of data tha buckets a range  a range of outcomes into columns along the x-axis.
+- frequency distribution - a graph or data set organised to show the frequency of occurence of each possible outcome of a repeatable event observed many times
+- standard deviation : statistic that measures the dispersion of a dataset relative to its mean and is calculated as the square root.
+- variance : measure variability .Calculated by taking average of squared deviations from the mean.. It telss degree of spread in your data set.
+- mean : of a data set sus found by adding all numbers in the data set and then dividing by the number of values. m= sum of terms/ number of terms.
+- median : middle value when a data set is ordered from leas to greatest
+- mode : is the number that occurs often in a data set.
+- sorting : process of arranging data into meaningful order os that you cna analyse it more effectively.
+- regression : statistical method used in finance, inveting and other disciplines taht attempts to determine the strength and character of the relationship between one dependent variable and series of other variables.
+- clas interval : difference btw upper class limit ans lower class limit
+- hypothesis testing : way fr you to test the result of a survey or experiment to see if you have meaningfl result.
+- z-test : hypothesis test with normal distribution that uses z-statistic. Used when you know population variance or if you you dont know the polpulation varince but have a large smaple size.
+- T-test : ypothesis test with t-distribution that uses t-statistics. Used whe you dont know the population variance and have small sample size
+- Cherry picking - practice of only selecting daa thta supports ones desired onclusion.
+- P-hacking : one manipulate hs/her data collection or nalysis until non-significant results become significant. 
+- Significance Chasing : when a researcher reports insignificant result as if theyre almost significant.
