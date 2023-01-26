@@ -6,3 +6,22 @@ A. There is a difference between readonly and {get; }:
 In int x { get; } (which won't compile as there's no way to set x - I think you needed public int x { get; private set; } ) your code can keep changing x
 
 In readonly int x;, x is initialised either in a constructor or inline and then can never change.
+
+
+Q. Diff btw ICollection vs IList vs IEnumerable vs List
+-------------------------------------------------------------
+
+
+Have you ever been confused about the difference between IEnumerable, ICollection, IList, and List in .NET and not sure when to use which one? Let's break it down!
+
+As you may already know that IEnumerable is the base interface for all collections in .NET? It allows for enumeration of items in a collection. This means that you can use a foreach loop to iterate through the items in the collection, but you cannot add, remove or check the number of items in the collection.
+
+ICollection adds the ability to add, remove, and check the number of items in a collection. It's a step up from IEnumerable. This means that in addition to being able to enumerate the items, you can now add and remove items from the collection and check the count of items in the collection.
+
+IList takes it a step further and allows for indexing and accessing items by index, as well as adding and removing items by index. This means that in addition to the capabilities of ICollection, you can now access items by index, as well as add and remove items by index.
+
+And finally, List is a concrete implementation of IList that provides additional methods such as sorting and searching. This means that in addition to all the capabilities of IList, you can now sort the items in the collection and search for specific items in the collection.
+
+It's important to note that if you always use List, you may end up with a lot of unnecessary functionality and memory usage. It's always best to use the appropriate interface or implementation based on the specific needs of your project.
+
+So there you have it! IEnumerable is the base interface, ICollection adds add/remove capabilities, IList adds indexing and List is a concrete implementation with additional methods.
