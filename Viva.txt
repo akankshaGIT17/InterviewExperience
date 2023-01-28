@@ -572,6 +572,7 @@ TCP/IP
 - link list (singly , double)
 - stack (lifo)
 -  prefix expression to a postfix expression using pointers. which DS?
+- type of ds : - Primitive, Non- primitive (=>linear ,non linear(structure class)
 
 - queue (fifo)
 - tree vs binary tree : tree cannot be empty least has root
