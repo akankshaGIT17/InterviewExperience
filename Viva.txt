@@ -660,3 +660,28 @@ TCP/IP
 - Cherry picking - practice of only selecting daa thta supports ones desired onclusion.
 - P-hacking : one manipulate hs/her data collection or nalysis until non-significant results become significant. 
 - Significance Chasing : when a researcher reports insignificant result as if theyre almost significant.
+
+
+=================================================BCSL-34=================================================================
+- what is DBMS? - designed to store and retrieve data
+- types of relations 
+	- one to one
+	- one to many
+	- many to many
+- entity : set of attributes in  a database
+- normalization and types
+- alternate key 
+- All the form of normalization.
+- Primary Key?/ Foreign key/ super key/ candidate key
+- what is a tuple
+- CoDD rule
+- BcNF - boyce-codd normal form (inside a 3 NF, any functional dependency x->y , x should be the super key of the table.)
+- trigger 
+- Procedure
+- view?
+- temporary table
+- ACID : Atomicity, Consistency, isolation, durability
+- what are checkpoints : all the prev logs are removed and permanently stored in the storage system.
+- DDL (create/alter/drop/truncate), DML(select/update/insert/delete) ,TCL(transaction control lang) ,DCL (data control lang)
+- types of relational calculas : Tuple relational , Domain Relational.
+ 
