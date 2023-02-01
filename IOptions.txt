@@ -1,0 +1,56 @@
+IOption<T>
+---------------
+
+- allows to access and manage configuration options in a strongly typed manner.
+- When to use ? 
+	- when you need to access configuration options for your application in a strongly-typed manner.
+	- When you need to access a set of options that are related to a specific feature or component of your application,
+	- When you want to separate the concerns of different parts of your application. By using IOptions<T> you can encapsulate the options for a specific feature or component of your application, making it easier to understand and maintain
+	- When you need to update the options during the lifetime of the application. 
+
+>> * IOptionsSnapshot<T> is an alternative to IOptions<T>, it's recommended to use IOptionsSnapshot<T> when the options can change during the lifetime of the application
+- Ex : app that need to acces set of option related to email use IOptions<EmailOptions> to access them.
+- First register ut in dependency injection container.
+- done in startup.cs in ConfigureService()
+> 
+	services.Configure<EmailOptions>(Configuration.GetSection("Email"));
+
+- this tells DI to use Email section fo configuration file to populate in EmailOptions.
+
+> 
+	private readonly EmailOptions _options;
+
+	public MyController(IOptions<EmailOptions> options)
+	{
+		_options = options.Value;
+	}
+	
+	
+	----------------------------------------------
+	public class EmailOptions
+{
+    public string SmtpServer { get; set; }
+    public int SmtpPort { get; set; }
+    public string SmtpUsername { get; set; }
+    public string SmtpPassword { get; set; }
+}
+
+Appsettings.json
+--------------------
+
+{
+  "Email": {
+    "SmtpServer": "smtp.example.com",
+    "SmtpPort": 587,
+    "SmtpUsername": "user@example.com",
+    "SmtpPassword": "password"
+  },
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft": "Warning",
+      "Microsoft.Hosting.Lifetime": "Information"
+    }
+  },
+  "AllowedHosts": "*"
+}
