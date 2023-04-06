@@ -320,8 +320,29 @@ IEnumerable and IQueryable interfaces are both used to work with collections of 
 ✅ It can be more efficient when working with large data
 
 ✅ It can be more helpful when you have to apply a lot of filtrations, you can apply all filters on Queryable and when you are done you can convert data to desired collection
+===================================================================================================
+IEnumerable vs IList
+
 
 𝐈𝐄𝐧𝐮𝐦𝐞𝐫𝐚𝐛𝐥𝐞
 ✔️ IEnumerable executes queries on the client side.
 
 ✔️ It is generally used to work with in-memory data collections.
+
+
+IEnumerable is base interface for all collections in .NET and List is concrete class.
+
+IEnumerable<T>
+- It is read only.
+- It is interface
+- It can’t initialized with new()
+- It defines a single method called GetEnumerator
+- If you don’t need to perform add/remove then it is best
+-IEnumerable is implemented by many collections, such as Array, List, and Dictionary
+
+List<T>
+- It is not read only.
+- It is a concrete class
+- Best when you want to perform add/remove operation.
+- It implements IList and IList implements IEnumerable so list has all features of IEnumerable
+
