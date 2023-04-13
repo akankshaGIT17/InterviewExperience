@@ -1,0 +1,26 @@
+Thread safety
+-----------------
+-> What is the role of volatile keyword in ensuring thread safety, and when should it be used?
+
+-> Explain how to use lock statement in C# to ensure thread-safe access to shared resources. What are some potential issues with using lock and how can they be avoided?
+
+-> Discuss the differences between using Monitor, Mutex, and Semaphore for managing thread synchronization and thread safety. Provide examples of when to use each.
+
+-> can the Thread.MemoryBarrier method be used to enforce a strict ordering of memory operations between threads? Provide an example.
+
+-> cribe the benefits and drawbacks of using ConcurrentDictionary instead of a regular Dictionary with locks for thread-safe operations in a multi-threaded environment.
+
+-> ain the concept of lock contention and how it can impact the performance of a multi-threaded application. What strategies can be employed to reduce lock contention in a C# application?
+
+-> cuss the use of async and await keywords in C# for managing asynchronous operations. How do these keywords help in ensuring thread safety?
+
+1. whas thread safety, and why is it important in a multithreaded application?
+2. Can you explain the difference between a thread-safe and a non-thread-safe application?
+3. How can you ensure thread safety in C#, and what are some common techniques for achieving it?
+4. What are the advantages and disadvantages of using locks to manage concurrent access to shared resources?
+5. Can you explain the concept of a critical section, and how can it be used to ensure thread safety?
+6. What is a thread pool, and how can it be used to improve the performance of a multithreaded application?
+7. Can you explain the difference between synchronous and asynchronous programming, and how does it relate to thread safety?
+8. How can you use immutable objects to ensure thread safety in C#?
+9. Can you explain the concept of a memory barrier, and how can it be used to ensure thread safety?
+10. What are some common pitfalls of multithreaded programming, and how can they be avoided in C#?
