@@ -346,3 +346,18 @@ List<T>
 - Best when you want to perform add/remove operation.
 - It implements IList and IList implements IEnumerable so list has all features of IEnumerable
 
+===================================================
+𝐃𝐢𝐜𝐭𝐢𝐨𝐧𝐚𝐫𝐲 📖 𝐯𝐬 𝐇𝐚𝐬𝐡𝐭𝐚𝐛𝐥𝐞 🗃️?
+🔹 Type Safety: Dictionary is type-safe while Hashtable is not. This means that Dictionary provides compile-time type checking, whereas Hashtable relies on runtime type casting.
+🔹 Enumerated Item: The enumerated
+item in the case of Dictionary is KeyValuePair, which represents a single
+key-value pair, whereas it is DictionaryEntry in the case of a Hashtable, which
+represents a single dictionary entry.
+🔹 Boxing/Unboxing: Dictionary does
+not need to perform boxing/unboxing because it is a type-safe collection.
+Hashtable, on the other hand, stores both keys and values as objects, which can
+result in boxing/unboxing and potential type errors.
+🔹 Performance: Dictionary is
+generally faster and has better memory management compared to Hashtable due to
+its type safety and faster hash algorithm.
+
