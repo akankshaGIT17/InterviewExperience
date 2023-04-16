@@ -29,6 +29,11 @@
 	- The child component is updated when Angular detects the data has changed in the parent component.
 	- this.aquaticCreatures = [...this.aquaticCreatures, newAquaticCreature]; - this is an array that is marking a push intself in the parent component
 - NgZone:
+In Angular, NgZone is a service that provides a way to execute a function within a specific zone. The zone is an execution context that can be used to track asynchronous tasks and events.
+The role of NgZone in change detection is to trigger Angular's change detection mechanism when asynchronous tasks outside of Angular's context have completed.
+For example, when you use a third-party library that triggers an asynchronous task, such as a timer or an HTTP request, the task runs outside of Angular's context. This means that Angular's change detection mechanism is not aware of the changes that have occurred when the task is complete.
+By using NgZone, you can execute the code that updates the component's view within Angular's context. This ensures that Angular is aware of the changes and can update the view accordingly.
+In summary, NgZone plays an important role in ensuring that Angular's change detection mechanism is triggered when asynchronous tasks outside of Angular's context have completed.
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -37,6 +42,10 @@ template reference : #primaryinput etc -- starts with #
 => VIEWCHILD
 =================
 => NEED
+	1. To access a child component's properties or methods from the parent component.
+	2. To manipulate the child component's DOM elements from the parent component.
+	3. To listen to events emitted by the child component.
+	
 	- Appcomponent need references to many elements inside its template. thats when viewchild can be used
 	- Change behaviour of element in component class. Then we must get reference of the element. 
 	- It return ElementRef type
@@ -330,6 +339,28 @@ EX : Recactive form module contains directoves /services/pipes/components that c
 				- Without routing we can use - createNgModuleRef - Lazy loading a module, only when it is required. (//https://www.wittyprogramming.dev/articles/lazy-load-component-angular-without-routing/)
 => Pre-Loading : modules loaded auto after app starts
 				- used to load specific feature modules that are very likely to be used soon after the application started.
+				
+				
+here are other ways to lazy load a module or component in Angular:
+1.Using the Router: You can use the Angular Router to lazy load a module or component on demand. This involves configuring the router to load the module or component when a specific route is requested. This is the most common way to lazy load modules in Angular.
+2.Using dynamic component loading: You can use Angular's ComponentFactoryResolver to dynamically load a component on demand. This involves creating a ComponentFactory for the component you want to load, and then using the ComponentFactoryResolver to create an instance of the component.
+3.Using loadChildren with a string: You can use the loadChildren property of a route to lazy load a module using a string that specifies the path to the module. This is similar to using the Router, but it allows you to specify the module path as a string instead of using a function that returns a module.
+4.Using loadChildren with a function: You can also use the loadChildren property of a route to lazy load a module using a function that returns a module. This gives you more control over how the module is loaded, and allows you to perform additional checks or operations before loading the module.
+========================================================================================================================
+GAURD
+-----
+In Angular, a guard is an interface that can be implemented to provide navigation protection. Guards are used to restrict access to certain routes based on certain conditions.
+There are four types of guards in Angular:
+1.
+CanActivate: This guard is used to allow or deny access to a route based on a condition. It can be used to check if a user is authenticated or has permission to access a certain route.
+2.
+CanActivateChild: This guard is similar to CanActivate, but it is used to protect child routes instead of the main route.
+3.
+CanDeactivate: This guard is used to prevent users from leaving a route with unsaved changes. It can be used to ask the user if they want to discard their changes before leaving.
+4.
+CanLoad: This guard is used to prevent the loading of a module or lazy-loaded route until a condition is met. It can be used to check if a user is authenticated or has permission to load a certain module.
+Guards are typically used in conjunction with the Angular Router to provide navigation protection in an Angular application.
+=========================================================================================================================
    ngOnInit() vs Constructor
 ---------------------------
 	- lifecycle hook by angular, indicating that angular is done creating instance 
@@ -339,3 +370,56 @@ EX : Recactive form module contains directoves /services/pipes/components that c
 	   ngOnInit() {
      // Called after the constructor and called  after the first ngOnChanges() 
   
+========================================================================================================================
+DI in Angular
+--------------
+Dependency Injection (DI) in Angular is a design pattern that allows you to create reusable, modular, and testable code. It is a way of providing the objects that an object needs, rather than requiring the object to create them itself.
+In Angular, DI is implemented by the @Injectable decorator and the Injector class. The @Injectable decorator is used to define a service, which is a class that provides some functionality to other parts of the application. The Injector class is used to create instances of services and to provide them to other parts of the application.
+To use DI in Angular, you need to follow these steps:
+1. Create a service by defining a class with the
+@Injectable
+decorator.
+2. Define the dependencies of the service in the constructor.
+3. Use the service in a component or another service by declaring it as a constructor parameter.
+4. The Angular DI system creates an instance of the service and provides it to the component or service that requested it.
+The main benefits of using DI in Angular are:
+1. Reusability: Services can be used in multiple components, making it easy to reuse code.
+2. Testability: Services can be easily tested in isolation, without having to worry about their dependencies.
+3. Modularity: Services can be easily swapped out or replaced, making it easy to switch between different implementations.
+4. Scalability: DI makes it easy to add new functionality to an application, without having to worry about the dependencies of existing code.
+
+
+==================================================================================
+Ways to share data in Angular
+-----------------------------
+There are different ways to share data between Angular components. Here are some common approaches:
+1.
+Using Input and Output Decorators: You can use @Input and @Output decorators to pass data between parent and child components. @Input is used to pass data from parent to child component, while @Output is used to emit events from child to parent component.
+2.
+Using Services: You can create a shared service that provides data to multiple components. Components can then inject the service and use its methods to access or modify the data.
+3.
+Using RxJS Observables: You can use RxJS Observables to share data between components. The data can be emitted by one component and subscribed to by another component.
+4.
+Using Local Storage: You can store data in local storage and retrieve it in another component.
+
+
+Bundeling in Angular
+----------------------
+Bundling in Angular is the process of combining multiple JavaScript and CSS files into a single file, called a bundle, that can be served to the client. This reduces the number of HTTP requests required to load the application, which can significantly improve the application's load time.
+Angular provides a built-in mechanism called the Angular CLI (Command Line Interface) for creating and managing bundles. When you run the ng build command, the CLI generates a set of JavaScript and CSS bundles based on your application's code and configuration.
+The bundles generated by the Angular CLI use a technique called tree shaking to remove any unused code from the final bundle. This helps to keep the bundle size small, which is important for optimizing the application's load time.
+In summary, bundling in Angular is a process of combining JavaScript and CSS files into a single file, which can reduce the number of HTTP requests and improve the application's load time.
+-===============================================================================
+Types of Data Loading in Angular
+---------------------------------
+n Angular, there are different ways to load data from an external source:
+1.
+Eager loading: In this approach, data is loaded at the time of component initialization. This is suitable for small applications with less complex data.
+2.
+Lazy loading: In this approach, data is loaded only when it is required. This is suitable for large applications with complex data that might take time to load.
+3.
+Server-side rendering (SSR): In this approach, the data is loaded on the server and then rendered on the client-side. This improves the performance of the application and also helps with SEO.
+4.
+Preloading: In this approach, the application preloads the data in the background so that it is available when the user navigates to a different page. This improves the user experience by reducing the loading time.
+5.
+Caching: In this approach, the data is cached on the client-side so that it can be reused without having to make a network call. This improves the performance of the application and reduces the load on the server.
