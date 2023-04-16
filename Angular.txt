@@ -28,6 +28,12 @@
 	- apply changedetection on the child component and it detects changes from the parent 
 	- The child component is updated when Angular detects the data has changed in the parent component.
 	- this.aquaticCreatures = [...this.aquaticCreatures, newAquaticCreature]; - this is an array that is marking a push intself in the parent component
+	- By default, Angular uses the ChangeDetectionStrategy.Default strategy, which triggers change detection for the entire component tree whenever there is a change in the application state. However, this can be inefficient, especially if your application has a large number of components.
+	
+TYPES: 
+	1.ChangeDetectionStrategy.OnPush: This strategy triggers change detection only when the input properties of a component change, or when an event is fired from the component. This can significantly improve performance, especially for large applications.
+	2.ChangeDetectionStrategy.Immutability: This strategy is similar to OnPush, but it also checks for changes in immutable objects. This can further optimize performance by reducing unnecessary change detection.
+	3.ChangeDetectionStrategy.OnPushObserve: This strategy is similar to OnPush, but it also observes the output properties of a component. This can be useful when you want to optimize performance by avoiding unnecessary change detection.
 	
 - NgZone:
 -----------
