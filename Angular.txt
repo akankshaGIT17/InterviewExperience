@@ -28,12 +28,22 @@
 	- apply changedetection on the child component and it detects changes from the parent 
 	- The child component is updated when Angular detects the data has changed in the parent component.
 	- this.aquaticCreatures = [...this.aquaticCreatures, newAquaticCreature]; - this is an array that is marking a push intself in the parent component
+	
 - NgZone:
-In Angular, NgZone is a service that provides a way to execute a function within a specific zone. The zone is an execution context that can be used to track asynchronous tasks and events.
-The role of NgZone in change detection is to trigger Angular's change detection mechanism when asynchronous tasks outside of Angular's context have completed.
-For example, when you use a third-party library that triggers an asynchronous task, such as a timer or an HTTP request, the task runs outside of Angular's context. This means that Angular's change detection mechanism is not aware of the changes that have occurred when the task is complete.
-By using NgZone, you can execute the code that updates the component's view within Angular's context. This ensures that Angular is aware of the changes and can update the view accordingly.
-In summary, NgZone plays an important role in ensuring that Angular's change detection mechanism is triggered when asynchronous tasks outside of Angular's context have completed.
+-----------
+
+In Angular, NgZone is used to manage and monitor the execution of asynchronous tasks. It provides a way to execute code outside of the Angular zone, which can improve performance and prevent certain issues, such as change detection errors.
+Here are some scenarios where you might want to use NgZone:
+1. When working with third-party libraries or APIs that run outside of the Angular zone.
+2. When dealing with long-running tasks, such as HTTP requests or heavy computations, that could block the UI thread and cause the application to freeze.
+3. When working with browser events, such as mouse or keyboard events, that can cause the application to trigger change detection unnecessarily.
+By using NgZone, you can ensure that your code runs in the correct zone and that change detection is triggered only when necessary.
+
+> Disadvantages : 
+	1. Increased complexity: Using NgZone can add complexity to your code, especially if you're not familiar with how change detection works in Angular.
+	2.Performance overhead: NgZone can add some performance overhead to your application, as it needs to run change detection on every event that occurs within 		the application.
+	3.Difficult to debug: If there are issues with change detection, it can be difficult to debug, as NgZone is a black box that handles change detection 		internally.
+	4.Dependency on Angular: NgZone is an Angular-specific service, which means that if you ever decide to switch to a different framework, you'll need to 		rewrite any code that relies on it.
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------
 
