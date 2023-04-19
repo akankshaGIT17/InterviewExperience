@@ -54,6 +54,19 @@ Task
 						      }
 				the code executed after an await keyword can eventually be executed by a random thread
 						
+
+
+
+Q. how to avoid blocking on asynchronous exceptions c#
+Asynchronous exceptions occur when an exception is thrown on a thread other than the main thread. By default, these exceptions will terminate the application if they are not handled. In order to avoid blocking on asynchronous exceptions in C#, you can follow these best practices:
+1.Use async/await keywords: When using asynchronous programming, it is recommended to use the async/await keywords. This allows you to handle exceptions in a clean and efficient way. Any exception thrown in an async method will be propagated to the caller, which can then handle the exception as needed.
+2.
+Use Task.Exception property: If you are using Task objects to manage asynchronous operations, you can use the Task.Exception property to retrieve any exceptions that were thrown during the operation. You can then handle the exception as needed.
+3.
+Use try/catch blocks: You can also use try/catch blocks to catch exceptions that are thrown in asynchronous code. When using async/await, any exceptions thrown in the await call will be caught by the catch block.
+4.
+Use TaskScheduler.UnobservedTaskException event: In some cases, exceptions may be thrown on threads that are not being monitored by the application. In order to catch these exceptions, you can use the TaskScheduler.UnobservedTaskException event. This event is raised when a Task object throws an exception that is not observed by the application.
+
 =---------------------------------------------------------------------------------------------------------------------------------------------------------
 => Threads and threading
   ======================
