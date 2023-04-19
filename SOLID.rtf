@@ -102,7 +102,57 @@ Dependency Inversion
 		Ø Class A -> Inter B  <- Class B -> Inter C <- Class C
 			B and C are dependent on interfaces, so underlining fucntion would remain same
 			Also mocking will be easy
-		
+ -- Below code is exmplae of implementation of DI without any third party framework.	
+Let's say we have a high-level class UserService which depends on a low-level class UserRepository to fetch data from the database.
+
+
+public class UserService
+{
+    private readonly UserRepository _userRepository;
+    
+    public UserService()
+    {
+        _userRepository = new UserRepository();
+    }
+    
+    public List<User> GetUsers()
+    {
+        return _userRepository.GetUsers();
+    }
+}
+In this code, UserService is tightly coupled to UserRepository, which makes it difficult to modify or test UserService without also modifying UserRepository.
+
+To apply the Dependency Inversion Principle, we need to invert the dependency between UserService and UserRepository. We can achieve this by introducing an abstraction or interface that both UserService and UserRepository depend on.
+
+
+public interface IUserRepository
+{
+    List<User> GetUsers();
+}
+
+public class UserRepository : IUserRepository
+{
+    public List<User> GetUsers()
+    {
+        // Fetch users from the database
+    }
+}
+
+public class UserService
+{
+    private readonly IUserRepository _userRepository;
+    
+    public UserService(IUserRepository userRepository)
+    {
+        _userRepository = userRepository;
+    }
+    
+    public List<User> GetUsers()
+    {
+        return _userRepository.GetUsers();
+    }
+}
+
 	
 Open Close
 ----------
