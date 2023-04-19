@@ -1,3 +1,12 @@
+
+Transient vs Scoped
+-----------------------
+
+Transient: Use Transient when the service has no state that needs to be shared between requests, and when creating a new instance of the service for each request is fast and inexpensive. For example, if the service provides a simple calculation or a lightweight operation that doesn't require any setup or configuration, it can be registered as Transient.
+
+Scoped: Use Scoped when the service has state that needs to be shared within the context of a single HTTP request, but not across multiple requests. For example, if the service provides a database context that is used by multiple repositories within a single HTTP request, it can be registered as Scoped.
+
+
 =========== https://github.com/babula38/Dotnet-Interview-Questions/blob/main/8-to-10-years-experience/draft.md ================
 - What is the difference between .Net & .NetCore?
 
