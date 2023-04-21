@@ -374,3 +374,42 @@ result in boxing/unboxing and potential type errors.
 generally faster and has better memory management compared to Hashtable due to
 its type safety and faster hash algorithm.
 
+Method hidin--
+------------------
+
+Method  C#, method hiding refers to the ability to define a method in a derived class with the same name as a method in the base class, but with a different implementation. When a method is hidden in this way, it is not accessible through a reference to the base class.
+
+To hide a method in C#, you can use the 'new' keyword to explicitly indicate that you are hiding the base class method. Here's an example:
+
+
+class BaseClass
+{
+    public void SayHello()
+    {
+        Console.WriteLine("Hello from BaseClass!");
+    }
+}
+
+class DerivedClass : BaseClass
+{
+    public new void SayHello()
+    {
+        Console.WriteLine("Hello from DerivedClass!");
+    }
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        BaseClass b = new BaseClass();
+        b.SayHello(); // Outputs "Hello from BaseClass!"
+
+        DerivedClass d = new DerivedClass();
+        d.SayHello(); // Outputs "Hello from DerivedClass!"
+
+        BaseClass bd = new DerivedClass();
+        bd.SayHello(); // Outputs "Hello from BaseClass!"
+    }
+}
+
