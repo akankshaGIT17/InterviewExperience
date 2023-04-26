@@ -60,3 +60,42 @@ Pure Softwares
 --------------
 - Dynamic vs object
 - 
+
+NAGARRO
+========
+- when we await a function in c#, it wait till the response is recieved. The code doesn't move forward to next line of code (as we see while debugging) How is this asynchronous?
+Good question! When you use the await keyword in C#, it allows the current thread to yield control back to its caller until the awaited task completes. This means that the thread is not blocked, but rather it is free to perform other operations while waiting for the awaited task to complete.
+When you execute an asynchronous operation, it typically involves performing some I/O operation, such as reading data from a file or sending a network request. When the I/O operation is initiated, the thread is free to perform other operations until the I/O operation completes. Once the I/O operation completes, a callback method is invoked to signal that the operation has finished. At this point, the await keyword resumes execution of the original thread, allowing it to continue processing the result of the asynchronous operation.
+So, even though the code appears to be blocking on the await keyword, it is in fact free to perform other operations while waiting for the asynchronous operation to complete. This is what makes it possible to write asynchronous code that can handle multiple requests in parallel, without blocking the main thread of execution
+
+
+- what is synchronisazation.
+- what is task.parallel
+- what is async and await
+- in linq generate a query that selects only name id and department from employee and then join this query with HOD table on hodid with id and select hod name.
+- IEnumerable vs IQyueryable
+- Middleware vs filter
+- how to change column name in EF code first or db first
+- private constructors
+- Interfaces are have same function name and parameters, both implemented inside one class, how to implement the common method with common signature in that class.
+- ref vs out
+
+
+S&P Global
+==========
+Q. move all zero to end of the array
+Q. Revere the straing : My Name is ABC -> yM emaN si CBA
+Q. thor an exception by keeping the stack trace.
+- What are topic in kafka
+Q. How do you listen to message in kafka?
+Q. Authentication vs Authorization
+Q. Write singleton class
+
+
+KEKA startup
+===========
+Q. We want some API to have authentication but some we dont want to have any authentication.
+Q. What is DI and its type.
+Q. Even after creating a class singleton how can we stop further creation of object.
+Q. Explain Liskov. 
+(they asked the definationa and didn't directly asked liskov, provided a scenario)
