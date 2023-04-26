@@ -25,3 +25,10 @@ EGon Zehnnder
 - ways you are securing your key/vault
 - Manage Identity in Azure
 
+
+S & P global
+------------
+ - why do we need azure table when we already have ssql tables.
+ - what is the need for azure blob
+ - why do we need containers when we can deploy the same code directly on the azure cloud.
+ 
