@@ -37,3 +37,11 @@ R systems
 -MIRKIT
 ========
 - Difing multiple indexes on table ex 100 col in a table, we have defined indexs on all, which operation will be impacted : insert/update/delete
+
+S&P Global
+==========
+- which index changes the underlining physical data?
+- Non clustered indexed data is physical data or not (i it changes the physical data)
+- > Query
+	record can be deleted from a tbale using soft delete. Maintain the uniqueness of data. Ex IsActive is 1 for an email id which means its active i have soft deleted this email id to 0 now i can add sam email id again. But if its true i cannot.
+	- name the constantraint directly from SQL which can be sued here 
