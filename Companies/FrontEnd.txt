@@ -1,0 +1,30 @@
+Annalect : 
+-------------
+Q. Find the ouptut
+const promise = new Promise((resolve, reject) => {
+    console.log(1);
+    setTimeout(() => {
+         console.log("timerStart");
+          resolve("success");
+          console.log("timerEnd");
+     }, 0);
+     console.log(2);
+});
+promise.then((res) => {
+     console.log(res);
+});
+console.log(4);
+
+Q. Find the output
+ 
+const arr = [10, 12, 15, 21];
+for (let i = 0; i < arr.length; i++) { // change let to var and the output differs
+setTimeout(function() {
+        console.log(`index: ${i}, element: ${arr[i]}`)
+    }, 3000);
+}
+
+Q. Difference between let and var
+Q. Practicle : create a html/component and simply take inout in one field and on click of the submit of the submit button show that value in onother field.
+Q. Wnat is hoisting 
+Q. what are callback functions
