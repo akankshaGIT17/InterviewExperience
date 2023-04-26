@@ -99,3 +99,4 @@ Q. What is DI and its type.
 Q. Even after creating a class singleton how can we stop further creation of object.
 Q. Explain Liskov. 
 (they asked the definationa and didn't directly asked liskov, provided a scenario)
+- what are memory leaks and how to prevent them?
