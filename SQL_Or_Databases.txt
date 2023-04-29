@@ -68,8 +68,53 @@ select case when null = null then 'yep' else 'nope'
 -> nope 
 
 
+==========================================
+Q. Difference between temp table, table variable and CTE
+Temp Tables are physically created in the tempdb database. These tables act as the normal table and also can have constraints, an index like normal tables.
 
-============================================
+CTE is a named temporary result set which is used to manipulate the complex sub-queries data. This exists for the scope of a statement. This is created in memory rather than the Tempdb database. You cannot create an index on CTE.
+
+Table Variable acts like a variable and exists for a particular batch of query execution. It gets dropped once it comes out of a batch. This is also created in the tempdb database but not the memory.
+
+
+Q. APPLY in sql
+A. The APPLY operator in SQL is used to join a table with a table-valued function (TVF). 
+A TVF is a function that returns a table, and can be used like a regular table in a SQL query.
+
+SELECT *
+FROM Orders
+CROSS APPLY fn_GetOrderDetails(Orders.OrderID) AS OrderDetails;
+
+Q. RANK vs DENSE_RANK vs ROW_NUMBER
+The row_number gives continuous numbers, while rank and dense_rank give the same rank for duplicates,
+but the next number in rank is as per continuous order so you will see a jump but in dense_rank doesn't have any gap in rankings.
+
+select Amount, Row_number() over (partition by Amount order by [Name]) as RowNum from Products
+select Amount, DENSE_RANK() over ( order by Amount) as RowNum from Products
+
+Q. Partition by clause
+we use it when we want to apply rank or dense rank on some basic partition lets say i want to get rank of each product based on the monthly sales then i would use partition by on month
+
+SELECT 
+    Month, 
+    Product, 
+    SalesAmount, 
+    RANK() OVER (PARTITION BY Month ORDER BY SalesAmount DESC) AS Rank
+FROM SalesTable;
+
+Q. Merge 
+ the MERGE statement is used to combine data from two tables into a single table. It is also known as an "UPSERT" operation because it can be used to either update existing records or insert new records
+ 
+ MERGE INTO TargetTable AS T
+USING SourceTable AS S
+ON T.ID = S.ID
+WHEN MATCHED THEN
+    UPDATE SET T.Value = S.Value
+WHEN NOT MATCHED THEN
+    INSERT (ID, Value) VALUES (S.ID, S.Value);
+
+
+=========================INDEXES===================
 Q. how to detemine which columns to include in index
 A. 
 Identify the columns that are required for your query: Review your query and identify the WHERE, JOIN, and SELECT clauses
