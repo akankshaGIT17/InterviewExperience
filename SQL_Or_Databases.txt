@@ -33,7 +33,22 @@ Heighest Salary
 --------------
 -> using count
 select s1.* from salary s1 where 0 = (select count(*) fromsalary s2 where s2.sal > s1.sal) 
+-------
+with cte
+as 
+(
+select Amount,count(*) as c from Products group by Amount)
+
+select * from cte where c=3
 // change 0 to 1 to select 2nd heighest or 2 for third heighest.
+
+
+-> Using dense_rank, rank
+with cte
+as 
+(
+select DENSE_RANK() over ( order by Amount) as RowNum from Products )
+select rownum from cte where RowNum =2
 
 -> using max (second heighest salary)
 select max(sal) from salary where salary not in (select max(sal) fromsalary)
