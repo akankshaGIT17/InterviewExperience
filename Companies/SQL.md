@@ -43,5 +43,15 @@ S&P Global
 - which index changes the underlining physical data?
 - Non clustered indexed data is physical data or not (i it changes the physical data)
 - > Query
-	record can be deleted from a tbale using soft delete. Maintain the uniqueness of data. Ex IsActive is 1 for an email id which means its active i have soft deleted this email id to 0 now i can add sam email id again. But if its true i cannot.
-	- name the constantraint directly from SQL which can be sued here 
+Question : in a table where i have a soft delete columne such as IsActive. I dont want to insert a duplicate Email address
+if that email address is already present in database with IsActive as true but if IasActive is set to false i
+should be able to insert the duplicate email address. which SQL constraint can be used here?
+- name the constantraint directly from SQL which can be used here 
+Ans : 
+you can use a filtered unique index to enforce the constraint that a duplicate email address can only be inserted if it has an IsActive value of false.
+
+CREATE UNIQUE INDEX idx_Email ON MyTable (Email) WHERE IsActive = 1;
+
+INSERT INTO MyTable (Email, IsActive) VALUES ('example@email.com', 0);
+
+	
