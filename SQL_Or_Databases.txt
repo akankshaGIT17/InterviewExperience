@@ -1,0 +1,187 @@
+Question : in a table where i have a soft delete columne such as IsActive. I dont want to insert a duplicate Email address
+if that email address is already present in database with IsActive as true but if IasActive is set to false i
+should be able to insert the duplicate email address. which SQL constraint can be used here?
+
+Ans : 
+you can use a filtered unique index to enforce the constraint that a duplicate email address can only be inserted if it has an IsActive value of false.
+
+CREATE UNIQUE INDEX idx_Email ON MyTable (Email) WHERE IsActive = 1;
+
+INSERT INTO MyTable (Email, IsActive) VALUES ('example@email.com', 0);
+
+
+
+CURSORS
+=========
+create cursor 
+
+2nd heighest amount
+----------------------
+- select top 1 empid,salary from (select Top 2 id,salary from emp order by Sakary desc) a orderby salary asc
+
+- select salary from employees a whre 2 = (select count(salary) from employee b where b.amount > a.amount)
+
+get alternate rows
+------------------
+--odd
+selet * from (select row_number() over (order by name)) as rows from emp where row%2 = 1
+--even
+selet * from (select row_number() over (order by name)) as rows from emp where row%2 = 0
+
+...............................................................................................
+Heighest Salary
+--------------
+-> using count
+select s1.* from salary s1 where 0 = (select count(*) fromsalary s2 where s2.sal > s1.sal) 
+// change 0 to 1 to select 2nd heighest or 2 for third heighest.
+
+-> using max (second heighest salary)
+select max(sal) from salary where salary not in (select max(sal) fromsalary)
+
+-> using TOP (nth heighest salary)
+select TOP 1 sal from (select TPO 3 sal from salary order by sal desc) AS S ORDER BY SAL.
+// change 3 to any number
+
+..............................................................................................
+Duplicate Data
+---------------
+-> By Row number
+with x as 
+(select *, rn = row_number() over (partition by order_no, item  order by orderno from employee)
+
+select * from x where rn > 1
+
+-> By Count
+1. select Orderno,count(*) from sales group by orderno having cnt > 1
+
+2. select col1, count(*) total from test_table group by col1 having count(*) > 1 order by count(*)
+
+..............................................................................................
+unique values without distinct
+------------------------------
+-> group by
+select name from employee group by name.
+............................................................................................
+=> null == null is always false in sql
+what will be output
+select case when null = null then 'yep' else 'nope'
+-> nope 
+
+
+
+============================================
+Q. how to detemine which columns to include in index
+A. 
+Identify the columns that are required for your query: Review your query and identify the WHERE, JOIN, and SELECT clauses
+Preferably choose columns with good selectivity: Columns with low cardinality (few unique values) may not be good candidates for index
+Consider the size of the table and the columns: Indexes require storage and maintenance resources
+Consider column order: In a multi-column index, the order of columns matters
+Evaluate the overall index usage: Once the index is created, monitor its usage by analyzing query plans
+
+Q. Covering Index
+A. Index that covers multiple columns
+
+Creating a covering index that includes all required columns could improve query performance, 
+unless there's a negative effect on write operations. Maintaining such an index can be expensive,
+
+CREATE NONCLUSTERED INDEX ix_users_username_email
+ON users (username, email) 
+INCLUDE (first_name, last_name, phone_number);
+
+Q. Ways to optimize index
+A. 
+1. Reducing the size of the index: Determine if there are any unnecessary columns in the index, and consider removing them. 
+This will improve the speed of the operations that use the index, as less data needs to be read.
+
+2. Adding or removing included columns: You can add or remove included columns to a non-clustered index by using the INCLUDE keyword. 
+This can allow the index to cover more columns which could help speed up queries.
+
+3. Rebuilding or reorganizing the index: If the index is highly fragmented, you can rebuild or reorganize it to improve performance. 
+A rebuilt index is completely rebuilt from scratch while a reorganized index moves the data around to eliminate the fragmentation.
+
+4. Creating a filtered index: Use filtered indexes to create an index on a subset of data instead of on the entire table.
+This can be effective if only a subset of the data is frequently queried.
+
+5. Fine-tuning index column data types: Use data types of appropriate size to reduce index size and improve performance.
+
+6. Use the Database Engine tuning advisor: This SQL Server tool can analyze a workload and recommend index changes to improve performance.
+
+7. Periodic index maintenance: Regular maintenance such as rebuilding an index in a periodical manner can also improve index performance.
+
+
+Q. When can index become a problem in SQL server
+A. 
+1. Over-indexing:Creating too many indexes on a table can lead to decreased performance because each index takes up disk space and requires additional
+processing when data is inserted, updated, or deleted. Over-indexing can also cause maintenance issues.
+
+2. Inappropriate indexing: Creating indexes on columns that are not frequently used, or on columns that have low selectivity, can cause 
+unnecessary overhead and slow down query performance.
+
+3. Large indexes: As the size of indexes grows, disk I/O operations required to read and update index data can cause bottlenecks in database performance.
+
+4. Fragmentation: As index data changes over time, fragmentation can occur, leading to decreased performance. Fragmentation can be caused
+by inserting, updating, and deleting data into a table with existing indexes.
+
+5. Lack of index maintenance: Failure to perform regular maintenance tasks such as index rebuilding or reorganization can lead to performance degradation.
+
+
+-------------------------
+NON-Clustered index
+........................
+A non-clustered index is a type of index in SQL that is used to speed up queries by creating a separate data structure that allows the database to quickly
+locate the rows that satisfy a given query.
+
+Unlike clustered indexes, which physically sort the data on disk according to the index key, non-clustered indexes create a separate data structure that 
+contains a copy of the index key and a pointer to the physical location of the corresponding row in the table.
+
+Non-clustered indexes are particularly useful for speeding up queries that involve columns that are not part of a clustered index or that are used in 
+conjunction with columns that are part of a clustered index.
+
+For example, let's say you have a table of customer orders with columns for customer name, order date, and order amount. If you frequently run queries that 
+retrieve all orders for a particular customer, a non-clustered index on the customer name column could significantly speed up those queries.
+
+Without the non-clustered index, the database would have to scan the entire table to find all the rows that match the customer name, which could be slow
+if the table is very large. But with the non-clustered index, the database can quickly locate the relevant rows using the index, which can greatly reduce 
+query times.
+
+Overall, non-clustered indexes are an important tool for optimizing the performance of SQL databases, particularly for tables with large amounts of data and
+complex query requirements. By creating separate data structures that allow the database to quickly locate the rows that satisfy a given query, non-clustered
+indexes can greatly speed up query times and improve overall database performance.
+
+
+Disadvantages
+--------------
+1. Index Overhead: Each non-clustered index requires additional disk space to store the index key and pointers to the corresponding rows. 
+This can create overhead that slows down database performance, particularly for large tables with many non-clustered indexes.
+
+2. Index Maintenance: Non-clustered indexes require maintenance to ensure they stay up-to-date as data is added, updated, or deleted from the table. 
+This maintenance can be time-consuming and resource-intensive, particularly for tables with high levels of data churn.
+
+3. Query Optimization: The SQL query optimizer may not always use the non-clustered index, even if it appears to be a good match for the query. 
+This can lead to suboptimal query performance if the optimizer selects a different query plan that does not use the index.
+
+4. Index Fragmentation: Non-clustered indexes can become fragmented over time as data is added, updated, or deleted from the table. 
+This fragmentation can lead to decreased query performance and increased disk I/O.
+
+
+Q. Wen can efine primary key without clusstered index?
+A. Yes we can 
+CREATE TABLE MyTable
+(
+    ID INT PRIMARY KEY NONCLUSTERED,
+    Column1 VARCHAR(50),
+    Column2 INT,
+    ...
+)
+
+
+Scenario where it would be helpful not to define the primary key as clustered
+
+If the table is a staging table that is used for ETL (Extract, Transform, Load) processes or other temporary data storage,
+you may not want to create a clustered index because it can slow down data loading and indexing operations.
+
+If the table already has a clustered index defined on a different column or columns, you may not want to create a 
+clustered index on the primary key to avoid the overhead of maintaining multiple clustered indexes on the same table.
+
+If the table has a high rate of data churn (i.e., frequent updates or deletes), 
+a non-clustered index on the primary key may be more efficient than a clustered index because it can reduce the overhead of index maintenance.
