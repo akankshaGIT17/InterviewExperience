@@ -1,0 +1,31 @@
+Topics
+----------
+Components, Templates, Interpolation, Property Binding and Event Binding within an Angular template
+Structural directives
+Building Nested Components
+Passing data from parent to child components using @Input
+Moving Data from Nested Components Using @Output
+Two way binding
+Template Reference Variable
+Built-in Pipes in Angular
+Building Custom Pipes in Angular
+Template driven forms and Validations
+Reactive forms and Validations
+Custom Directives
+Routing Basics
+Dynamic Routing in angular
+404 page routing (Wild Card route)
+Child Routing
+Implementing ViewChild in Angular Component
+Implementing Pagination in angular
+Filters and sorting
+Creating and using services in angular
+API Call in Angular
+Model and Interface
+Routing Module
+Group Routing
+Lazy loading in Angular
+Lazy loading of components
+CanActivate, CanDeactivate and resolve route handlers implementation
+Content projection
+Multiple slot Content projection
