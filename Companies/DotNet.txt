@@ -32,4 +32,24 @@ Egon
 - What is  HttpClient class
 - M2M realtion incode firsth and SQl. 
 	In SQL will it lead to redudancy
+	
+	
+EY
+====
+- What are middlewares?
+Q. What are some prefdefined middlewares?
+Q. Can we chnage the sequence of middlewares? how can we do that?
+Q. Run vs use in middleware?
+Q. Post vs PUt. Why do we need it when we have get
+Q. Ref vs out and when to use them?
 
+Annalect
+========
+Q. IActionResult vs HttpResponseMessage
+Q. Explain Route prefix in .net
+Q. What is multithreading 
+Q. Explain method overriding. If we dont use override keyword in child will it give error
+Q. Explain the new keyword.
+Q. How do you check JWT token is valid or not ( asked in amny companies)
+Q. Explain the architecture of your system
+Q. Extry point in your application.
