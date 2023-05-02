@@ -115,3 +115,10 @@ Q. Even after creating a class singleton how can we stop further creation of obj
 Q. Explain Liskov. 
 (they asked the definationa and didn't directly asked liskov, provided a scenario)
 - what are memory leaks and how to prevent them?
+Q. how do you store data.
+Q. What is singleton and what is factory pattern
+Q. Why do we really need singleton for? What are its use cases.
+
+
+
+
