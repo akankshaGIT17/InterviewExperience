@@ -9,3 +9,12 @@ Pure Software
 - How to hanlde failure of any MS
 - How many instance of each MS
 - Any API management tool for MS to interact
+
+EY
+===
+- Explain the SAGA
+- Lets say all the microservices are interacting through a single DB. Now every one is updating that DB, that can lead to inconsistency. How can we resolve it in microservices?
+
+KEKA
+====
+- Explain the microservices communication working.
