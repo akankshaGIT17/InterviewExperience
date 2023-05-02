@@ -54,4 +54,7 @@ CREATE UNIQUE INDEX idx_Email ON MyTable (Email) WHERE IsActive = 1;
 
 INSERT INTO MyTable (Email, IsActive) VALUES ('example@email.com', 0);
 
+KEKA
+=====
+- Explain the database design of the workflow visualizer in your application. Explain all the models and all the properties. Explain how the flow is happening from the frontend to backend to database.
 	
