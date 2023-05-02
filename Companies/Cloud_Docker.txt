@@ -41,5 +41,5 @@ KEKA
 - What are deployment slots in azure service?
 - in Azure Blob what are share access signature, SAS token?
 - We have SQL tale table then why do we need Azure tables? (adv and dis)
-
+- How does jenkins works? Have you written any script or pipeline in Jenkins? -{2 companies asked this question}
 - 
