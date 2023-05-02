@@ -19,3 +19,9 @@
 - What optimization and perfomance tuning you did
 - How did you helped in desingn phase of your project
 - explain you previous proejcts and technologies you have used
+
+KEKA
+=====
+- explain the visualier workflow in your system. how the request is goingg from fron end to backend while explaining all the classes and database structure, Also explain if we can change the vizualizer.
+- Explain authentication in your system.
+- what is the entry point of your front end application.
