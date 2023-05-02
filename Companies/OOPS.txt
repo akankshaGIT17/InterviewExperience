@@ -3,3 +3,11 @@ Pure Software
 - Explain Open close principle
 - Explain Liskov principle and when is it vvoilated
 - how to increase functionaslity of class when other classes don't want to implement
+
+Annalect
+=========
+- What is the difference between system architecture and design pattern.
+Q. Explain the SOLID preicinciples being implemented in your application.
+Q. Explain how O (open close) where we use Interfaces is differenct from I (interface segregation principle)
+Q. Explain factory pattern
+Q. Explain strtegy pattern.
