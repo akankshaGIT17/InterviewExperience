@@ -28,3 +28,25 @@ Q. Difference between let and var
 Q. Practicle : create a html/component and simply take inout in one field and on click of the submit of the submit button show that value in onother field.
 Q. Wnat is hoisting 
 Q. what are callback functions
+----------------2 nd Round----------------
+Q. Role based authentication in Angular.
+Q. Explain how route Gaurd is implemented in your project
+Q. What is the role of NgOnChanges? When are you using it in your project?
+Q. Explain custom Validators and how are you implementing it in your porject.
+Q. What are query param.What are its preserve and merge types.
+Q. I have to search list of companies by entring some value in the search box, i want to preserve the searched text for next grouping (paging).
+Q. How does ngBuild works.
+Q. What is tree shaking in angular.
+Q. How do you register a service in a module? Once i have registered a service i dont want any other module to register this service. How can i do that? - @ProvidedIn  decorator
+-===================================================================================================================================================
+KEKA
+=======
+
+Q. Explain routegaurd in your project?
+Q. What is the entry point of your angular application?
+Q. DI in Angular 
+Q. We need to the application only after specific set of data is loaded. How can we do that with Anglar.
+Q. Explain ngOnInit and how it is used in your application.
+Q. What are injection tokens? how do they help in system design / life cycle?
+Q. What do you mean by request in angular. When user types URL of your application how is your application opening its landing page?
+
