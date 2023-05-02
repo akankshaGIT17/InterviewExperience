@@ -57,4 +57,7 @@ INSERT INTO MyTable (Email, IsActive) VALUES ('example@email.com', 0);
 KEKA
 =====
 - Explain the database design of the workflow visualizer in your application. Explain all the models and all the properties. Explain how the flow is happening from the frontend to backend to database.
-	
+- Difference between nvarchar and varchar
+- primary key vs unique key
+- explain the different type of indexes and when to use them.
+- difference between function and SP.
