@@ -11,4 +11,11 @@ Wipro AMCT
 10 21 61 71 88
 o/p ,ax - 78 (btw 10 -88)
 
+S&P global
+===========
+- [1,0,9,4,0,2,4,0] : move all the zero to the right of the array [1,9,4,2,4,0,0,0]
+- Reverse the string : My name is abc -> yM eman si cba
+
+SQL - find 2 heighest salary
+- find duplicates in a table.
 
