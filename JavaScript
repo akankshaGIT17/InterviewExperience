@@ -1,0 +1,84 @@
+******************************************************************************************************
+This (THIS)
+*************
+1. global space
+	this -> window object
+		- for node.js it would be global
+2. function
+	function x(){
+		console.log(this)
+		}
+	x();
+non strict mode
+-> window , this is not strict mode
+"user strict"
+-> the same function will return undefined
+-> this substitution in non-strict mode
+----------------------------------------
+-- if value of "this" is undefined or null, then "this" will be replaced with globalObject
+-> this substitution in strict mode
+----------------------------------------
+-> the value of "this" depends on how it is called
+	- x() -> undefined // without any reference of object, it is undefined
+	-window.x() -> window object
+
+3. inside a object method
+const obj =  {
+	a: 10,
+	x: function () {
+		console.log(this);
+	   }
+	}
+
+obj.x(); => this becomes the value of object
+// o/p : {a:10, x: f()}
+
+3. Call/Apply/Bind methods (sharing method)
+const student= {
+	name:"Akashay",
+	printName: function(){
+		console.log(this.name)
+		}
+	};
+
+student.printName();
+
+const student2 = {
+	name: "Deepika"
+	}
+student.printName.call(student2);// vlaue of this becomes student2
+
+4. inside arrow function
+- they dont have a this binding
+const obj =  {
+	a: 10,
+	x: () => {
+		console.log(this); // window
+	   }
+	}
+obj.x();
+enclosing lexical content
+const obj2 =  {
+	a: 10,
+	x: function() {
+	const y = () => {
+		console.log(this); // print the object ie obj2 => { a:10, x: f()}
+	   }
+	y();
+	}
+
+obj2.x();
+here this is enclosed in lexical context of x. Above x was under the window lexical context
+
+5. inside DOM element => reference to HTMLelement
+<button onclick="alert(this)"> Click me </button>
+[object HTML.ButtonElement]
+<button onclick="alert(this.tagName)"> Click me </button>
+BUTTON
+
+
+
+
+
+
+
